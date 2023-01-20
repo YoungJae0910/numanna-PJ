@@ -12,7 +12,7 @@ const Login = () => {
       </StLogoBox>
 
       <StInputBox>
-        <StLogo src={login} style={{ maxWidth: "40%", marginBottom: "30px" }} />
+        <StLogo src={login} style={{ maxWidth: "40%" }} />
         <StInput placeholder="아이디를 입력하세요." type="text" />
         <StInput
           placeholder="비밀번호를 입력하세요."
@@ -34,7 +34,7 @@ export default Login;
 const StBox = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 
   width: 100%;
@@ -42,7 +42,7 @@ const StBox = styled.div`
 `;
 const StLogo = styled.img`
   max-width: 65%;
-  margin-top: 30px;
+  margin: 30px;
 `;
 
 const StLogoBox = styled.div`
@@ -53,25 +53,28 @@ const StLogoBox = styled.div`
 
 const StInputBox = styled.div`
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   border: 1px solid #fe6473;
-  max-width: 80%;
-  height: 500px;
-  background-color: white;
+  max-width: 90%;
+  /* height: 500px; */
+  background-color: #ffe1e1;
   border-radius: 5px;
   margin: 20px;
 `;
 
 const StInput = styled.input`
-  width: 290px;
-  height: 40px;
+  width: 80%;
+  /* height: 40px; */
   border-radius: 10px;
   border: 1px solid #fa8033;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
+  text-align: center;
   outline: none;
+
+  /* margin: 10px; */
   /* 
   & input:focus {
     outline: none;
@@ -80,11 +83,12 @@ const StInput = styled.input`
 `;
 
 const StBtn = styled.button`
-  width: 290px;
-  height: 40px;
+  width: 80%;
+  /* height: 100% */
   border-radius: 5px;
   color: #f25a5a;
   background-color: white;
+  padding: 10px;
   margin: 20px;
   border: 1px solid #fa8033;
   &:hover {
@@ -96,4 +100,5 @@ const StBtn = styled.button`
 const StText = styled.span`
   color: rgb(195, 190, 190);
   font-size: 15px;
+  margin-bottom: 30px;
 `;

@@ -19,7 +19,7 @@ const SignUp = () => {
         <StInput placeholder="비밀번호를 입력하세요." type="password" />
         <StInput placeholder="비밀번호를 다시 입력하세요." type="password" />
         <StInput placeholder="이메일을 입력하세요." type="email" />
-        <StInput placeholder="이상형을 입력하세요." type="text" />
+        {/* <StInput placeholder="이상형을 입력하세요." type="text" /> */}
         <StBtn>회원가입하기</StBtn>
       </StInputBox>
     </StBox>
@@ -31,11 +31,11 @@ export default SignUp;
 const StBox = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
 `;
 const StLogo = styled.img`
   max-width: 65%;
@@ -50,26 +50,26 @@ const StLogoBox = styled.div`
 
 const StInputBox = styled.div`
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
   flex-direction: column;
   border: 1px solid #fe6473;
-  max-width: 80%;
-  height: 650px;
-  background-color: white;
+  width: 90%;
+  background-color: #ffe1e1;
   border-radius: 5px;
-  margin: 30px;
+  margin: 20px;
 `;
 
 const StInput = styled.input`
-  width: 290px;
-  height: 40px;
+  width: 90%;
+
   border-radius: 10px;
   border: 1px solid #fa8033;
-  padding: 20px;
+  padding: 10px;
+  margin: 10px;
   box-sizing: border-box;
   outline: none;
-  margin-top: 15px;
+  text-align: center;
   /* 
   & input:focus {
     outline: none;
@@ -78,11 +78,11 @@ const StInput = styled.input`
 `;
 
 const StBtn = styled.button`
-  width: 290px;
-  height: 40px;
+  width: 80%;
   border-radius: 5px;
   color: #f25a5a;
   background-color: white;
+  padding: 10px;
   margin: 20px;
   border: 1px solid #fa8033;
   &:hover {
