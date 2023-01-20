@@ -67,6 +67,16 @@ export const updateUser = async (id: String, newUser: User) => {
     return res.data
 }
 
+export const addUser = async (newUser: User) => {
+    const userToAdd = newUser
+    userToAdd.password = HashPassword.v1(newUser.password)
+
+    const res = await axios.post(getUsersUrl(), userToAdd)
+    if (!res) return
+
+    return res.data
+}
+
 export const deleteUser = async (id: String) => {
     const res = await axios.delete(getUsersUrl() + "/" + id)
     if (!res) return
