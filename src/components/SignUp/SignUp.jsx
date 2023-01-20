@@ -11,7 +11,7 @@ const SignUp = () => {
       </StLogoBox>
 
       <StInputBox>
-        <StLogo src={signup} />
+        <StLogo src={signup} style={{ marginBottom: "20px" }} />
         <StInput placeholder="이름을 입력하세요." type="text" />
         <StInput placeholder="닉네임를 입력하세요." type="text" />
         <StInput placeholder="나이를 입력하세요." type="number" />
@@ -54,39 +54,42 @@ const StInputBox = styled.div`
   align-items: center;
   flex-direction: column;
   border: 1px solid #fe6473;
-  width: 90%;
+  width: 60%;
   background-color: #ffe1e1;
   border-radius: 5px;
   margin: 20px;
 `;
 
 const StInput = styled.input`
-  width: 90%;
+  width: 75%;
 
   border-radius: 10px;
-  border: 1px solid #fa8033;
+  border: 1px solid rgb(195, 190, 190);
   padding: 10px;
   margin: 10px;
   box-sizing: border-box;
   outline: none;
   text-align: center;
-  /* 
-  & input:focus {
+  outline: none;
+
+  &:focus {
     outline: none;
-    border: 3px solid #fe6473;
-  } */
+    border: 2px solid #fe6473;
+  }
 `;
 
 const StBtn = styled.button`
-  width: 80%;
+  width: 40%;
   border-radius: 5px;
-  color: #f25a5a;
-  background-color: white;
+  color: white;
+  background-color: #f25a5a;
   padding: 10px;
-  margin: 20px;
-  border: 1px solid #fa8033;
+  margin-bottom: 15px;
+  border: 1px solid #f6809f;
+  font-weight: 600;
+  outline: none;
   &:hover {
-    background-color: #f25a5a;
-    color: white;
+    background-color: white;
+    color: #f25a5a;
   }
 `;

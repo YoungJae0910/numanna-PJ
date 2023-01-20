@@ -68,32 +68,36 @@ const StInput = styled.input`
   width: 80%;
   /* height: 40px; */
   border-radius: 10px;
-  border: 1px solid #fa8033;
+  border: 1px solid rgb(195, 190, 190);
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
   outline: none;
 
   /* margin: 10px; */
-  /* 
-  & input:focus {
+
+  &:focus {
     outline: none;
-    border: 3px solid #fe6473;
-  } */
+    border: 2px solid #fe6473;
+  }
 `;
 
 const StBtn = styled.button`
-  width: 80%;
+  width: 40%;
   /* height: 100% */
   border-radius: 5px;
-  color: #f25a5a;
-  background-color: white;
+  color: white;
+  background-color: #f25a5a;
   padding: 10px;
   margin: 20px;
-  border: 1px solid #fa8033;
+  border: 2px solid #f6809f;
+  font-weight: 600;
+  outline: none;
   &:hover {
-    background-color: #f25a5a;
-    color: white;
+    background-color: white;
+    color: #f25a5a;
+    /* transform: scale(1.1);
+    transition: transform 0.5s; */
   }
 `;
 
@@ -101,4 +105,5 @@ const StText = styled.span`
   color: rgb(195, 190, 190);
   font-size: 15px;
   margin-bottom: 30px;
+  font-weight: 600;
 `;
