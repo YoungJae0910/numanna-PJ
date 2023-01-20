@@ -1,5 +1,5 @@
-import React from "react";
+import React from "react"
 
-export default function Parter() {
-  return <div></div>;
+export default function Partner() {
+    return <div></div>
 }
