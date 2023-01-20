@@ -2,9 +2,9 @@ import axios from "axios"
 import { getUsersUrl } from "./apiSettings"
 
 export type PersonalityType = {
-    extroversionScore: Number
-    smokingScore: Number
-    alcoholScore: Number
+    extroversionScore: number
+    smokingScore: number
+    alcoholScore: number
 }
 
 export type User = {
@@ -13,7 +13,7 @@ export type User = {
     name: String
     displayName: String
     email: String
-    age: Number
+    age: number
     personalityType: PersonalityType
 }
 

@@ -4,15 +4,15 @@ import { getMessagesUrl } from "./apiSettings"
 export type MessageWithoutId = {
     senderId: String
     recepientId: String
-    sentAt: Number
+    sentAt: number
     content: String
 }
 
 export type Message = {
-    id: Number
+    id: number
     senderId: String
     recepientId: String
-    sentAt: Number
+    sentAt: number
     content: String
 }
 
