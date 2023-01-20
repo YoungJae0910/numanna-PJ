@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import mainimg from "../../assets/mainimg.jpeg";
 import logo from "../../assets/numanna_logo.png";
+import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
@@ -14,8 +15,12 @@ export default function Main() {
         <Textp3>신개념 데이팅 사이트</Textp3>
       </TextDiv>
       <ButtonDiv>
-        <Button1>지금가입</Button1>
-        <Button2>로그인</Button2>
+        <Link to={"/signup"}>
+          <Button1>지금가입</Button1>
+        </Link>
+        <Link to={"/login"}>
+          <Button2>로그인</Button2>
+        </Link>
       </ButtonDiv>
     </WrapDiv>
   );
@@ -29,7 +34,7 @@ const WrapDiv = styled.div`
 
 const Mainimg = styled.img`
   width: 100%;
-  filter: brightness(30%);
+  filter: brightness(20%);
   position: absolute;
 `;
 
@@ -46,7 +51,7 @@ const TextDiv = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100%;
+  height: 80px;
 `;
 const Textp1 = styled.p`
   position: absolute;

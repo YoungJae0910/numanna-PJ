@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../../assets/logo.png";
 import login from "../../assets/login.png";
+
 // import { Link } from "react-router-dom";
 
 const Login = () => {
