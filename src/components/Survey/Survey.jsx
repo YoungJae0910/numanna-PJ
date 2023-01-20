@@ -1,22 +1,27 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from '../button/Button';
+import Header from '../../page/Header';
 
 const Survey = () => {
   return (
-    <SurveyContainer>
-      <SurveyQuestionBox>
-        <SurveyQuestionText>Q. 당신은 술을 좋아합니까?</SurveyQuestionText>
-      </SurveyQuestionBox>
-      <SurveyAnswerBox>
-        <SurveySelectBox>
-          <SurveySelectText>Yes</SurveySelectText>
-        </SurveySelectBox>
-        <SurveySelectBox>
-          <SurveySelectText>No</SurveySelectText>
-        </SurveySelectBox>
-        <SurveyQuestionText></SurveyQuestionText>
-      </SurveyAnswerBox>
-    </SurveyContainer>
+    <>
+      <Header />
+      <SurveyContainer>
+        <SurveyQuestionBox>
+          <SurveyQuestionText>Q. 당신은 술을 좋아합니까?</SurveyQuestionText>
+        </SurveyQuestionBox>
+        <SurveyAnswerBox>
+          <Button
+            size={'primary'}
+            height={'primary'}
+            outline={false}
+            text={'Yes'}
+          />
+          <Button size={'primary'} height={'primary'} text={'No'} />
+        </SurveyAnswerBox>
+      </SurveyContainer>
+    </>
   );
 };
 
@@ -27,9 +32,12 @@ const SurveyContainer = styled.div`
 `;
 
 const SurveyQuestionBox = styled.div`
-  width: 80%;
+  width: 100%;
   height: 100px;
   background-color: #f94772;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const SurveyQuestionText = styled.h2`
@@ -38,18 +46,12 @@ const SurveyQuestionText = styled.h2`
 `;
 
 const SurveyAnswerBox = styled.div`
-  width: 80%;
-  height: 400px;
+  width: 100%;
+  height: 500px;
   background-color: #ffe1e1;
-`;
-
-const SurveySelectBox = styled.div`
-  width: 10%;
-  height: 15%;
-  background-color: #fa8033;
-`;
-
-const SurveySelectText = styled.h3`
-  font-weight: 100%;
-  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10%;
 `;
