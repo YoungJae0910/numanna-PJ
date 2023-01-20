@@ -29,7 +29,7 @@ const NULL_USER: User = {
         smokingScore: 0,
         alcoholScore: 0
     } as PersonalityType
-}
+} as User
 
 export const validatePassword = async (id: String, password: String) => {
     const user: User = await getUser(id)
