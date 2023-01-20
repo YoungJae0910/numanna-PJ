@@ -1,13 +1,14 @@
-import styled from "styled-components";
-import "./App.css";
-import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp/SignUp";
+
+import React from 'react';
+import Router from './routes/Router';
+
 
 function App() {
   return (
     <div>
-      <Login />
-      {/* <SignUp /> */}
+
+      <Router />
+
     </div>
   );
 }
