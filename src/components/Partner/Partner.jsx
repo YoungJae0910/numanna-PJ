@@ -37,6 +37,22 @@ const Partner = () => {
             <span>성별:</span>
           </PartnerInfo>
         </PartnerLi>
+        <PartnerLi>
+          <PartnerImg></PartnerImg>
+          <PartnerInfo>
+            <span>이름:</span>
+            <span>나이:</span>
+            <span>성별:</span>
+          </PartnerInfo>
+        </PartnerLi>
+        <PartnerLi>
+          <PartnerImg></PartnerImg>
+          <PartnerInfo>
+            <span>이름:</span>
+            <span>나이:</span>
+            <span>성별:</span>
+          </PartnerInfo>
+        </PartnerLi>
       </PartnerUl>
     </FlexBox>
   );
@@ -58,6 +74,7 @@ const PartnerUl = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: scroll;
 `;
 
 const PartnerLi = styled.li`
@@ -68,7 +85,6 @@ const PartnerLi = styled.li`
   padding: 10px;
   box-sizing: border-box;
   border-radius: 10px;
-  border: 1px solid black;
   background-color: #ffe1e1;
   display: flex;
   justify-content: space-around;
