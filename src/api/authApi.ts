@@ -2,9 +2,9 @@ import axios from "axios"
 import { getUsersUrl } from "./apiSettings"
 
 export type PersonalityType = {
-    extroversionScore: Number
-    smokingScore: Number
-    alcoholScore: Number
+    extroversionScore: number
+    smokingScore: number
+    alcoholScore: number
 }
 
 export type User = {
@@ -13,7 +13,7 @@ export type User = {
     name: String
     displayName: String
     email: String
-    age: Number
+    age: number
     personalityType: PersonalityType
 }
 
@@ -29,7 +29,7 @@ const NULL_USER: User = {
         smokingScore: 0,
         alcoholScore: 0
     } as PersonalityType
-}
+} as User
 
 export const validatePassword = async (id: String, password: String) => {
     const user: User = await getUser(id)
