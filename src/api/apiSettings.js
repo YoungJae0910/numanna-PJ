@@ -8,6 +8,10 @@ export const getMessagesUrl = () => {
     return SERVER_URL + "/messages"
 }
 
-export const getPersonalitySurveyQuestions = () => {
+export const getPersonalitySurveyQuestionsUrl = () => {
     return SERVER_URL + "/personalitySurveyQuestions"
+}
+
+export const getLikesUrl = () => {
+    return SERVER_URL + "/likes"
 }
