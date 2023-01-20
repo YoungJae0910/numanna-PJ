@@ -8,10 +8,10 @@ export enum PersonalityScoreType {
 }
 
 export type PersonalitySurveyQuestion = {
-    id: Number
-    question: String
-    trueValue: Number
-    falseValue: Number
+    id: number
+    question: string
+    trueValue: number
+    falseValue: number
     scoreType: PersonalityScoreType
 }
 
@@ -22,7 +22,7 @@ export const getPersonalitySurveyQuestions = async () => {
     return res.data as PersonalitySurveyQuestion[]
 }
 
-export const getPersonalitySurveyQuestion = async (id: String) => {
+export const getPersonalitySurveyQuestion = async (id: string) => {
     const res = await axios.get(getPersonalitySurveyQuestionsUrl() + "/" + id)
     if (!res) return
 

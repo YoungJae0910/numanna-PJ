@@ -1,8 +1,8 @@
 import { getUser } from "../api/authApi"
 
 export const getTotalScoreDifferenceBetweenTwoUsers = async (
-    firstUserId: String,
-    secondUserId: String
+    firstUserId: string,
+    secondUserId: string
 ) => {
     const firstUser = await getUser(firstUserId)
     const secondUser = await getUser(secondUserId)
@@ -23,8 +23,8 @@ export const getTotalScoreDifferenceBetweenTwoUsers = async (
 }
 
 export const getExtroversionScoreDifferenceBetweenTwoUsers = async (
-    firstUserId: String,
-    secondUserId: String
+    firstUserId: string,
+    secondUserId: string
 ) => {
     const firstUser = await getUser(firstUserId)
     const secondUser = await getUser(secondUserId)
@@ -41,8 +41,8 @@ export const getExtroversionScoreDifferenceBetweenTwoUsers = async (
 }
 
 export const getSmokingScoreDifferenceBetweenTwoUsers = async (
-    firstUserId: String,
-    secondUserId: String
+    firstUserId: string,
+    secondUserId: string
 ) => {
     const firstUser = await getUser(firstUserId)
     const secondUser = await getUser(secondUserId)
@@ -58,8 +58,8 @@ export const getSmokingScoreDifferenceBetweenTwoUsers = async (
 }
 
 export const getAlcoholScoreDifferenceBetweenTwoUsers = async (
-    firstUserId: String,
-    secondUserId: String
+    firstUserId: string,
+    secondUserId: string
 ) => {
     const firstUser = await getUser(firstUserId)
     const secondUser = await getUser(secondUserId)
