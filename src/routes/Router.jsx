@@ -9,13 +9,11 @@ import Matching from "../components/Matching/Matching";
 export default function Router() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
         <Route path="/survey" element={<Survey />} />
         <Route path="/" element={<Main />} />
         <Route path="/matching" element={<Matching />} />
       </Routes>
-      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
