@@ -137,6 +137,6 @@ export class HashPassword {
             hash |= 0
         }
 
-        return String(hash)
+        return `${hash}`
     }
 }
