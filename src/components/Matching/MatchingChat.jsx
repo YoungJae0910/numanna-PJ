@@ -1,11 +1,57 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
+import { addChat } from "../../redux/modules/chat";
 
 export default function MatchingChat() {
+  const [text, setText] = useState("");
+
+  const dispatch = useDispatch();
+  const chat = useSelector((state) => state.chat);
+
+  // const fetchChat = async () => {
+  //   const { data } = await axios.get("http://localhost:3001/");
+  //   setText(data);
+  // };
+
+  // useEffect(() => {
+  //   fetchChat();
+  // }, []);
+
+  console.log(text);
+
+  const changeText = (e) => {
+    setText(e.target.value);
+  };
+
+  const chatSubmit = (e) => {
+    e.preventDefault();
+
+    const newChat = {
+      id: uuidv4(),
+      text,
+    };
+
+    dispatch(addChat(newChat));
+
+    setText("");
+
+    // console.log(newChat);
+  };
+
   return (
     <WrapInput>
-      <SubmitInput></SubmitInput>
-      <SubmitButton>보내기</SubmitButton>
+      <form onSubmit={chatSubmit}>
+        <SubmitInput
+          value={text}
+          placeholder="메세지를 입력해주세요."
+          onChange={changeText}
+        ></SubmitInput>
+        <SubmitButton>보내기</SubmitButton>
+      </form>
     </WrapInput>
   );
 }

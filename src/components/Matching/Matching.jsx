@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MatchingChat from "./MatchingChat";
+import MatchingChatUser from "./MatchingChatUser";
 
 export default function Matching() {
   return (
@@ -9,10 +10,12 @@ export default function Matching() {
         <Chat>
           <ChatBoxLeftDiv>
             <ChatLeftText>username</ChatLeftText>
-            <ChatLeftDiv />
+            <ChatLeftDiv></ChatLeftDiv>
           </ChatBoxLeftDiv>
           <ChatBoxRightDiv>
-            <ChatRightDiv />
+            <ChatRightDiv>
+              <MatchingChatUser />
+            </ChatRightDiv>
             <ChatRightText>me</ChatRightText>
           </ChatBoxRightDiv>
           <ChatBoxLeftDiv>
