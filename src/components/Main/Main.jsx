@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 import mainimg from "../../assets/mainimg.jpeg";
-import logo from "../../assets/numanna (1).png";
+import logo from "../../assets/numanna_logo.png";
 
 export default function Main() {
   return (
