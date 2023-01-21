@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { addChat } from "../../redux/modules/chat";
+import signup from "../../assets/signup.png";
 
 export default function MatchingChat() {
   const [text, setText] = useState("");
@@ -43,44 +44,65 @@ export default function MatchingChat() {
   };
 
   return (
-    <WrapInput>
-      <form onSubmit={chatSubmit}>
-        <SubmitInput
+    <ChatForm onSubmit={chatSubmit}>
+      <ChatBox>
+        <ChatInput
           value={text}
           placeholder="메세지를 입력해주세요."
           onChange={changeText}
-        ></SubmitInput>
-        <SubmitButton>보내기</SubmitButton>
-      </form>
-    </WrapInput>
+          placeholder="Write a message..."
+        />
+        <ChatBtn>
+          <MainImg src={signup} />
+        </ChatBtn>
+      </ChatBox>
+    </ChatForm>
   );
 }
 
-const WrapInput = styled.div`
+const ChatForm = styled.form`
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  height: 200px;
-  background-color: white;
-  border: 3px solid #ffe1e1;
-  border-radius: 10px;
+  background-color: #ffe1e1;
   display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  box-sizing: border-box;
   align-items: center;
+  /* position: relative; */
 `;
 
-const SubmitInput = styled.textarea`
-  width: 88%;
-  height: 90%;
-  text-indent: 10px;
-  margin-left: 1%;
-  margin-right: 1%;
-  border: none;
-  &:focus {
-    outline: none;
+const ChatInput = styled.input`
+  padding: 14px;
+  width: 100%;
+  outline: none;
+  border-radius: 25px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+`;
+
+const ChatBox = styled.div`
+  width: 100%;
+  position: relative;
+`;
+const ChatBtn = styled.button`
+  border: 1px solid transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  outline: none;
+  position: absolute;
+  right: 10px;
+  top: 3px;
+  opacity: 1;
+  background-color: #ffe1e1;
+
+  &:hover {
+    background-color: white;
   }
 `;
-const SubmitButton = styled.button`
-  width: 20%;
-  height: 100%;
-  border: 3px solid #ffe1e1;
-  background-color: #ffe1e1;
-  border-radius: 5px;
+
+const MainImg = styled.img`
+  height: 90%;
 `;
