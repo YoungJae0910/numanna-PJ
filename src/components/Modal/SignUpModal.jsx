@@ -16,8 +16,7 @@ export default function SignUpModal({
   nickName,
   age,
   id,
-  passward,
-  passwordConfirm,
+  password,
   email,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -28,12 +27,11 @@ export default function SignUpModal({
       nickName,
       age,
       id,
-      passward,
-      passwordConfirm,
+      password,
       email,
     };
 
-    console.log(name);
+    console.log(typeof password);
     await addUser(newUser);
     setModalIsOpen(true);
   };
@@ -70,7 +68,7 @@ export default function SignUpModal({
 }
 
 const FinishBtn = styled.button`
-  width: 72%;
+  width: 75%;
   border-radius: 5px;
   color: white;
   background-color: #f25a5a;

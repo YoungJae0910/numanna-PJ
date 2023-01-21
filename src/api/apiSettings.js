@@ -1,17 +1,17 @@
-export const SERVER_URL = "https://numanna-server.herokuapp.com/"
+export const SERVER_URL = "https://numanna-server.herokuapp.com";
 
 export const getUsersUrl = () => {
-    return SERVER_URL + "/users"
-}
+  return SERVER_URL + "/users";
+};
 
 export const getMessagesUrl = () => {
-    return SERVER_URL + "/messages"
-}
+  return SERVER_URL + "/messages";
+};
 
 export const getPersonalitySurveyQuestionsUrl = () => {
-    return SERVER_URL + "/personalitySurveyQuestions"
-}
+  return SERVER_URL + "/personalitySurveyQuestions";
+};
 
 export const getLikesUrl = () => {
-    return SERVER_URL + "/likes"
-}
+  return SERVER_URL + "/likes";
+};

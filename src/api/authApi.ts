@@ -46,18 +46,40 @@ export const login = async (id: string, password: string) => {
     return false;
   }
 
-  // Set session
+  window.sessionStorage.setItem("isLoggedIn", "true");
+  window.sessionStorage.setItem("currentSessionId", id);
+  window.sessionStorage.setItem("authKey", HashPassword.v1(id));
 
   return true;
 };
 
 export const logout = () => {
-  // Clear session
+  window.sessionStorage.removeItem("isLoggedIn");
+  window.sessionStorage.removeItem("currentSessionId");
+  window.sessionStorage.removeItem("authKey");
 };
 
 export const isCurrentSessionValid = async () => {
-  // 일단
+  const isLoggedIn = window.sessionStorage.getItem("isLoggedIn");
+  if (!isLoggedIn) return false;
+
+  const userAuthKey = window.sessionStorage.getItem(
+    "currentSessionId"
+  ) as string;
+  if (!userAuthKey) return false;
+
+  const doesAuthKeyMatch =
+    window.sessionStorage.getItem("authKey") === HashPassword.v1(userAuthKey);
+  if (!doesAuthKeyMatch) return false;
+
   return true;
+};
+
+export const getCurrentSessionId = async () => {
+  const sessionId = window.sessionStorage.getItem("currentSessionId");
+  if (!sessionId) return "";
+
+  return sessionId;
 };
 
 export const updateUser = async (id: string, newUser: User) => {
@@ -70,7 +92,6 @@ export const updateUser = async (id: string, newUser: User) => {
 export const addUser = async (newUser: User) => {
   const userToAdd = newUser;
   userToAdd.password = HashPassword.v1(newUser.password);
-
   const res = await axios.post(getUsersUrl(), userToAdd);
   if (!res) return;
 
@@ -107,12 +128,14 @@ export const getUsers = async () => {
 export class HashPassword {
   static v1(password: string) {
     let hash = 0;
+    console.log(typeof password);
+
     for (let i = 0; i < password.length; i++) {
-      let chr = password?.charCodeAt(i);
+      let chr = password.charCodeAt(i);
       hash = (hash << 5) - hash + chr;
       hash |= 0;
     }
 
-    return string(hash);
+    return `${hash}`;
   }
 }

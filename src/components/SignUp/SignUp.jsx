@@ -11,7 +11,7 @@ const SignUp = () => {
   const [nickName, setNickName] = useState("");
   const [age, setAge] = useState("");
   const [id, setId] = useState("");
-  const [passward, setPassword] = useState("");
+  const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [email, setEmail] = useState("");
 
@@ -22,6 +22,7 @@ const SignUp = () => {
   const [passwordMessage, setPasswordMessage] = useState("");
   const [idMessage, setidMessage] = useState("");
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
+
   //유효성검사
   const [isName, setIsName] = useState(false);
   const [isNickName, setIsNickName] = useState(false);
@@ -75,7 +76,7 @@ const SignUp = () => {
     }
   }, []);
 
-  const passwardHandler = useCallback((e) => {
+  const passwordHandler = useCallback((e) => {
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
     const passwordCurrent = e.target.value;
@@ -92,12 +93,12 @@ const SignUp = () => {
     }
   }, []);
 
-  const passwardConfirmHandler = useCallback(
+  const passwordConfirmHandler = useCallback(
     (e) => {
       const passwordConfirmCurrent = e.target.value;
       setPasswordConfirm(passwordConfirmCurrent);
 
-      if (passward === passwordConfirmCurrent) {
+      if (password === passwordConfirmCurrent) {
         setPasswordConfirmMessage("비밀번호를 똑같이 입력했어요 : )");
         setIsPasswordConfirm(true);
       } else {
@@ -105,7 +106,7 @@ const SignUp = () => {
         setIsPasswordConfirm(false);
       }
     },
-    [passward]
+    [password]
   );
 
   const emailHandler = useCallback((e) => {
@@ -172,11 +173,11 @@ const SignUp = () => {
         <StInput
           placeholder="비밀번호를 입력하세요."
           type="password"
-          value={passward}
-          onChange={passwardHandler}
+          value={password}
+          onChange={passwordHandler}
           passwordText="비밀번호 (숫자+영문자+특수문자 조합으로 8자리 이상)"
         />
-        {passward?.length > 0 && (
+        {password?.length > 0 && (
           <Colortext className={`message ${isPassword ? "success" : "error"}`}>
             {passwordMessage}
           </Colortext>
@@ -185,7 +186,7 @@ const SignUp = () => {
           placeholder="비밀번호를 다시 입력하세요."
           type="password"
           value={passwordConfirm}
-          onChange={passwardConfirmHandler}
+          onChange={passwordConfirmHandler}
           passwordText=" "
         />
         {passwordConfirm?.length > 0 && (
@@ -217,7 +218,7 @@ const SignUp = () => {
           nickName={nickName}
           age={age}
           id={id}
-          passward={passward}
+          password={password}
           passwordConfirm={passwordConfirm}
           email={email}
         />
