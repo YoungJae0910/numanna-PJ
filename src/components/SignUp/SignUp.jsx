@@ -7,13 +7,13 @@ import SignUpModal from "../Modal/SignUpModal";
 
 const SignUp = () => {
   //user정보
-  const [name, setName] = useState();
-  const [nickName, setNickName] = useState();
-  const [age, setAge] = useState();
-  const [id, setId] = useState();
-  const [passward, setPassword] = useState();
-  const [passwordConfirm, setPasswordConfirm] = useState();
-  const [email, setEmail] = useState();
+  const [name, setName] = useState("");
+  const [nickName, setNickName] = useState("");
+  const [age, setAge] = useState("");
+  const [id, setId] = useState("");
+  const [passward, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [email, setEmail] = useState("");
 
   //오류메시지 상태저장
   const [nameMessage, setNameMessage] = useState("");
@@ -30,28 +30,33 @@ const SignUp = () => {
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
 
-  const onChangeName = useCallback((e) => {
-    setName(e.target.value);
-    if (e.target.value.length < 2 || e.target.value.length > 5) {
-      setNameMessage("2글자 이상 5글자 미만으로 입력해주세요.");
-      setIsName(false);
-    } else {
-      setNameMessage("올바른 이름 형식입니다 :)");
-      setIsName(true);
-    }
-    onChangeName("");
-  }, []);
+  const onChangeName = useCallback(
+    (e) => {
+      setName(e.target.value);
+      if (e.target.value.length < 2 || e.target.value.length > 5) {
+        setNameMessage("2글자 이상 5글자 미만으로 입력해주세요.");
+        setIsName(false);
+      } else {
+        setNameMessage("올바른 이름 형식입니다 :)");
+        setIsName(true);
+      }
+    },
+    [setIsName]
+  );
 
-  const nickNameHandler = useCallback((e) => {
-    if (e.target.value.length < 2 || e.target.value.length > 5) {
-      setNickNameMessage("2글자 이상 5글자 미만으로 입력해주세요.");
-      setIsNickName(false);
-    } else {
-      setNickNameMessage("올바른 이름 형식입니다 :)");
-      setIsNickName(true);
-    }
-    setNickName(e.target.value);
-  }, []);
+  const nickNameHandler = useCallback(
+    (e) => {
+      setNickName(e.target.value);
+      if (e.target.value.length < 2 || e.target.value.length > 5) {
+        setNickNameMessage("2글자 이상 5글자 미만으로 입력해주세요.");
+        setIsNickName(false);
+      } else {
+        setNickNameMessage("올바른 이름 형식입니다 :)");
+        setIsNickName(true);
+      }
+    },
+    [setIsNickName]
+  );
 
   const ageHandler = (event) => {
     setAge(event.target.value);
@@ -117,21 +122,6 @@ const SignUp = () => {
     }
   }, []);
 
-  const newUser = {
-    name,
-    nickName,
-    age,
-    id,
-    passward,
-    passwordConfirm,
-    email,
-  };
-
-  const addUser = async () => {
-    console.log(newUser);
-    await axios.post("http://localhost:3001/user", newUser);
-  };
-
   return (
     <StBox>
       <StLogoBox>
@@ -144,7 +134,7 @@ const SignUp = () => {
           placeholder="이름을 입력하세요."
           type="text"
           value={name}
-          onChange={onChangeName}
+          onChange={(e) => onChangeName(e)}
         />
         {name?.length > 0 && (
           <Colortext className={`message ${isName ? "success" : "error"}`}>
@@ -223,7 +213,13 @@ const SignUp = () => {
           isId={isId}
           isPassword={isPassword}
           isPasswordConfirm={isPasswordConfirm}
-          onClick={addUser()}
+          name={name}
+          nickName={nickName}
+          age={age}
+          id={id}
+          passward={passward}
+          passwordConfirm={passwordConfirm}
+          email={email}
         />
       </StInputBox>
     </StBox>

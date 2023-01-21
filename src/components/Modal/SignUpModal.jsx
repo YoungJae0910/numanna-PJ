@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
 export default function SignUpModal({
   isName,
@@ -10,8 +11,32 @@ export default function SignUpModal({
   isId,
   isPassword,
   isPasswordConfirm,
+  name,
+  nickName,
+  age,
+  id,
+  passward,
+  passwordConfirm,
+  email,
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const addUser = async () => {
+    const newUser = {
+      name,
+      nickName,
+      age,
+      id,
+      passward,
+      passwordConfirm,
+      email,
+    };
+
+    console.log(name);
+    await axios.post("http://localhost:3001/user", newUser);
+    setModalIsOpen(true);
+  };
+
   return (
     <>
       <FinishBtn
@@ -25,13 +50,14 @@ export default function SignUpModal({
             isPasswordConfirm
           )
         }
-        onClick={() => setModalIsOpen(true)}
+        onClick={addUser}
       >
         회원가입완료
       </FinishBtn>
       <ModalBox
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
+        ariaHideApp={false}
       >
         <ModalText>회원가입을 축하드립니다!!</ModalText>
         <Link to={"/Survey"}>

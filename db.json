@@ -1,3 +1,13 @@
 {
-  "user": []
+  "user": [
+    {
+      "name": "유영재",
+      "nickName": "나다영재",
+      "age": "31",
+      "id": "dbdudwo124",
+      "passward": "dudwo124!",
+      "passwordConfirm": "dudwo124!",
+      "email": "dbdudwo124@naver.com"
+    }
+  ]
 }
