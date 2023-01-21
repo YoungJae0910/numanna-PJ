@@ -42,8 +42,9 @@ const StBox = styled.div`
   height: 100%;
 `;
 const StLogo = styled.img`
-  max-width: 65%;
+  max-width: 300px;
   margin: 30px;
+  margin-top: 100px;
 `;
 
 const StLogoBox = styled.div`

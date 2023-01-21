@@ -256,7 +256,7 @@ const StInputBox = styled.div`
   align-items: center;
   flex-direction: column;
   border: 1px solid #fe6473;
-  width: 76%;
+  width: 350px;
   height: 650px;
   background-color: #ffe1e1;
   border-radius: 5px;
