@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { addUser } from "../../api/authApi.ts";
 import axios from "axios";
 
 export default function SignUpModal({
@@ -21,7 +22,7 @@ export default function SignUpModal({
 }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const addUser = async () => {
+  const onAddUser = async () => {
     const newUser = {
       name,
       nickName,
@@ -33,7 +34,7 @@ export default function SignUpModal({
     };
 
     console.log(name);
-    await axios.post("http://localhost:3001/user", newUser);
+    await addUser(newUser);
     setModalIsOpen(true);
   };
 
@@ -50,7 +51,7 @@ export default function SignUpModal({
             isPasswordConfirm
           )
         }
-        onClick={addUser}
+        onClick={onAddUser}
       >
         회원가입완료
       </FinishBtn>
@@ -69,7 +70,7 @@ export default function SignUpModal({
 }
 
 const FinishBtn = styled.button`
-  width: 75%;
+  width: 72%;
   border-radius: 5px;
   color: white;
   background-color: #f25a5a;

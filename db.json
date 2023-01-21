@@ -17,6 +17,15 @@
       "passward": "thgml124!",
       "passwordConfirm": "thgml124!",
       "email": "qkdthgml@naver.com"
+    },
+    {
+      "name": "고현석",
+      "nickName": "나다현석",
+      "age": "28",
+      "id": "rhgustjr12",
+      "passward": "gustjr124!",
+      "passwordConfirm": "gustjr124!",
+      "email": "rhgustjr124@naver.com"
     }
   ],
   "quest": []

@@ -129,7 +129,7 @@ const SignUp = () => {
       </StLogoBox>
 
       <StInputBox>
-        <StLogo src={signup} style={{ marginBottom: "20px" }} />
+        <StLogo1 src={signup} style={{ marginBottom: "20px" }} />
         <StInput
           placeholder="이름을 입력하세요."
           type="text"
@@ -234,8 +234,13 @@ const StBox = styled.div`
   align-items: center;
 `;
 const StLogo = styled.img`
-  max-width: 35%;
-  margin-top: 10px;
+  max-width: 300px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+`;
+const StLogo1 = styled.img`
+  max-width: 30%;
+  margin-top: 20px;
 `;
 
 const StLogoBox = styled.div`
@@ -257,7 +262,7 @@ const StInputBox = styled.div`
 `;
 
 const StInput = styled.input`
-  width: 75%;
+  width: 72%;
   border-radius: 10px;
   border: 1px solid rgb(195, 190, 190);
   padding: 10px;

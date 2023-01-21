@@ -8,41 +8,44 @@ export default function Main() {
   return (
     <WrapDiv>
       <Mainimg src={mainimg} />
-      <TitleLogo src={logo} />
       <TextDiv>
+        <TitleLogo src={logo} />
         <Textp1>아무도 만나지 못했기에...</Textp1>
         <Textp2>누구나 만날 수 있는</Textp2>
         <Textp3>신개념 데이팅 사이트</Textp3>
-      </TextDiv>
-      <ButtonDiv>
-        <Link to={"/signup"}>
+        <ButtonLink to={"/signup"}>
           <Button1>지금가입</Button1>
-        </Link>
-        <Link to={"/login"}>
+        </ButtonLink>
+        <ButtonLink to={"/login"}>
           <Button2>로그인</Button2>
-        </Link>
-      </ButtonDiv>
+        </ButtonLink>
+      </TextDiv>
     </WrapDiv>
   );
 }
 
 const WrapDiv = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
+  display: flex;
 `;
 
 const Mainimg = styled.img`
   width: 100%;
+  height: 100vh;
   filter: brightness(20%);
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const TitleLogo = styled.img`
-  position: absolute;
-  width: 70%;
-  left: 15%;
-  margin-top: 30%;
+  width: 300px;
+  height: 100px;
+  margin-top: 450px;
+  z-index: 20;
 `;
 
 const TextDiv = styled.div`
@@ -58,8 +61,8 @@ const Textp1 = styled.p`
   color: white;
   width: 80%;
   text-align: center;
-  margin-top: 140%;
-  font-size: 24px;
+  margin-top: 750px;
+  font-size: 28px;
   font-weight: bold;
 `;
 
@@ -68,8 +71,8 @@ const Textp2 = styled.p`
   color: white;
   width: 60%;
   text-align: center;
-  margin-top: 156%;
-  font-size: 20px;
+  margin-top: 810px;
+  font-size: 24px;
   font-weight: bold;
 `;
 const Textp3 = styled.p`
@@ -77,22 +80,16 @@ const Textp3 = styled.p`
   color: white;
   width: 60%;
   text-align: center;
-  margin-top: 170%;
-  font-size: 20px;
+  margin-top: 865px;
+  font-size: 25px;
   font-weight: bold;
 `;
 
-const ButtonDiv = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`;
 const Button1 = styled.button`
   position: absolute;
-  width: 30%;
+  width: 200px;
   height: 40px;
-  left: 35%;
-  margin-top: 100%;
+  margin-top: 250px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
@@ -107,10 +104,10 @@ const Button1 = styled.button`
 `;
 const Button2 = styled.button`
   position: absolute;
-  width: 30%;
+  width: 200px;
   height: 40px;
-  left: 35%;
-  margin-top: 113%;
+
+  margin-top: 310px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
@@ -122,4 +119,9 @@ const Button2 = styled.button`
     color: #f25a5a;
     transition: 0.5s;
   }
+`;
+
+const ButtonLink = styled(Link)`
+  display: flex;
+  justify-content: center;
 `;
