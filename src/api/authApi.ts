@@ -7,6 +7,12 @@ export type PersonalityType = {
     alcoholScore: number
 }
 
+export enum Sex {
+    Male = "Male",
+    Female = "Female",
+    Other = "Other"
+}
+
 export type User = {
     id: string
     password: string
@@ -14,6 +20,8 @@ export type User = {
     nickName: string
     email: string
     age: number
+    sex: Sex
+    partnerSex: Sex
     personalityType: PersonalityType
 }
 
@@ -24,6 +32,8 @@ const NULL_USER: User = {
     nickName: "null",
     email: "null",
     age: 0,
+    sex: Sex["Other"],
+    partnerSex: Sex["Other"],
     personalityType: {
         extroversionScore: 0,
         smokingScore: 0,
