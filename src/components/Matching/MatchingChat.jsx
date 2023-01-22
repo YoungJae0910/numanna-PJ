@@ -53,7 +53,8 @@ export default function MatchingChat() {
           placeholder="Write a message..."
         />
         <ChatBtn>
-          <MainImg src={signup} />
+          {/* <MainImg src={signup} /> */}
+          보내기
         </ChatBtn>
       </ChatBox>
     </ChatForm>
@@ -88,13 +89,13 @@ const ChatBox = styled.div`
 `;
 const ChatBtn = styled.button`
   border: 1px solid transparent;
-  width: 40px;
+  width: 50px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 5px;
   outline: none;
   position: absolute;
   right: 10px;
-  top: 3px;
+  top: 2px;
   opacity: 1;
   background-color: #ffe1e1;
 

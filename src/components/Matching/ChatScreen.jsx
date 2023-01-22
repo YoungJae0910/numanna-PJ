@@ -44,6 +44,7 @@ const TimeStamp = styled.div`
   border-radius: 25px;
   margin-bottom: 25px;
   margin-top: 25px;
+  opacity: 0.7;
 `;
 
 const LeftMesg = styled.div`
