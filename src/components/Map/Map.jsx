@@ -66,7 +66,7 @@ export default function Map() {
     }, [])
 
     //   marker.setMap(map);
-    var markerPosition = new kakao.maps.LatLng(33.450701, 126.570667)
+    var markerPosition = new kakao.maps.LatLng()
     var marker = new kakao.maps.Marker({
         position: markerPosition
     })
