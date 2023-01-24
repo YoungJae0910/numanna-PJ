@@ -5,6 +5,7 @@ import Main from "../components/Main/Main"
 import SignUp from "../components/SignUp/SignUp"
 import Matching from "../components/Matching/Matching"
 import Login from "../components/Login/Login"
+import Map from "../components/Map/Map"
 
 export default function Router() {
     return (
@@ -15,6 +16,7 @@ export default function Router() {
                 <Route path="/matching" element={<Matching />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/map" element={<Map />} />
             </Routes>
         </BrowserRouter>
     )
