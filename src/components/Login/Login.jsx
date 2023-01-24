@@ -2,11 +2,30 @@ import React from "react"
 import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import login from "../../assets/login.png"
-import { Link } from "react-router-dom"
+import { login as loginFunction } from "../../api/authApi.ts"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
 
 // import { Link } from "react-router-dom";
 
 const Login = () => {
+    const navigate = useNavigate()
+
+    const [id, setId] = useState("")
+    const [password, setPassword] = useState("")
+
+    const onLoginPressed = async () => {
+        const res = await loginFunction(id, password)
+        console.log(res)
+
+        if (!res) {
+            alert("로그인 실패")
+            return
+        }
+
+        navigate("/")
+    }
+
     return (
         <StBox>
             <StLogoBox>
@@ -15,13 +34,24 @@ const Login = () => {
 
             <StInputBox>
                 <StLogo src={login} style={{ maxWidth: "40%" }} />
-                <StInput placeholder="아이디를 입력하세요." type="text" />
+                <StInput
+                    placeholder="아이디를 입력하세요."
+                    type="text"
+                    value={id}
+                    onChange={(e) => {
+                        setId(e.target.value)
+                    }}
+                />
                 <StInput
                     placeholder="비밀번호를 입력하세요."
                     type="password"
                     style={{ marginTop: "20px" }}
+                    value={password}
+                    onChange={(e) => {
+                        setPassword(e.target.value)
+                    }}
                 />
-                <StBtn>로그인하기</StBtn>
+                <StBtn onClick={onLoginPressed}>로그인하기</StBtn>
 
                 {/* 링크들어갈예정 */}
                 {/* <Link to="/"></Link> */}
