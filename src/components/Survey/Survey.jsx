@@ -37,6 +37,19 @@ const Survey = () => {
         fetchQuestions()
     }, [])
 
+    const a = async () => {
+        const userLoggedIn = await isCurrentSessionValid()
+        if (!userLoggedIn) {
+            alert("로그인되지 않았습니다.")
+
+            navigate("/login")
+        }
+    }
+
+    useEffect(() => {
+        a()
+    }, [])
+
     const onYesClicked = () => {
         onClicked(true)
     }
@@ -45,14 +58,18 @@ const Survey = () => {
         onClicked(false)
     }
 
-    const onClicked = async (answer) => {
-        const userLoggedIn = await isCurrentSessionValid()
-        if (!userLoggedIn) {
-            alert("로그인되지 않았습니다.")
-            return
-        }
-
+    const onClicked = (answer) => {
         if (questions.length < 1) return
+
+        // 누적값이 아닌 최신값만 불러와지는 오류 있음
+
+        console.log("===")
+        console.log(extroversionScore)
+        console.log(alcoholScore)
+        console.log(smokingScore)
+        console.log("===")
+
+        console.log(question)
 
         switch (question.personalityScoreType) {
             case "Extroversion":
@@ -82,16 +99,25 @@ const Survey = () => {
                 break
         }
 
+        console.log("===")
+        console.log(extroversionScore)
+        console.log(alcoholScore)
+        console.log(smokingScore)
+        console.log("===")
+
+        handleGoToNextQuestion()
+    }
+
+    const handleGoToNextQuestion = async () => {
         if (currentQuestionIndex + 1 === questions.length) {
             //last question, submit
 
             const currentUserId = await getCurrentSessionId()
 
             const currentUser = await getUser(currentUserId)
-            currentUser.personalityScoreType.extroversionScore =
-                extroversionScore
-            currentUser.personalityScoreType.alcoholScore = alcoholScore
-            currentUser.personalityScoreType.smokingScore = smokingScore
+            currentUser.personalityType.ExtroversionScore = extroversionScore
+            currentUser.personalityType.AlcoholScore = alcoholScore
+            currentUser.personalityType.SmokingScore = smokingScore
 
             const res = await updateUser(currentUserId, currentUser)
             if (!res) return
@@ -117,13 +143,13 @@ const Survey = () => {
                         height={"primary"}
                         outline={false}
                         text={"Yes"}
-                        onClicked={onYesClicked}
+                        onClick={onYesClicked}
                     />
                     <Button
                         size={"primary"}
                         height={"primary"}
                         text={"No"}
-                        onClicked={onNoClicked}
+                        onClick={onNoClicked}
                     />
                 </SurveyAnswerBox>
             </SurveyContainer>
