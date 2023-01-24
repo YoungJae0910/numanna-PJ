@@ -89,3 +89,4 @@ const PartnerInfo = styled.div`
   display: flex;
   flex-direction: column;
 `;
+

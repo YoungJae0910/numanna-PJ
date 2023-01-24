@@ -1,16 +1,15 @@
 import axios from "axios"
 import { getLikesUrl } from "./apiSettings"
-import uuid from "react-uuid"
 
 type Like = {
     id: number
-    userWhoLikes: String
-    userWhoIsLiked: String
+    userWhoLikes: string
+    userWhoIsLiked: string
 }
 
 type LikeWithoutId = {
-    userWhoLikes: String
-    userWhoIsLiked: String
+    userWhoLikes: string
+    userWhoIsLiked: string
 }
 
 const getLikes = async () => {
@@ -21,8 +20,8 @@ const getLikes = async () => {
 }
 
 export const doesUserLike = async (
-    userWhoLikes: String,
-    userWhoIsLiked: String
+    userWhoLikes: string,
+    userWhoIsLiked: string
 ) => {
     const likes: Like[] = (await getLikes()) as Like[]
     const matchingLikes = likes
@@ -35,8 +34,8 @@ export const doesUserLike = async (
 }
 
 export const likeUser = async (
-    userWhoLikes: String,
-    userWhoIsLiked: String
+    userWhoLikes: string,
+    userWhoIsLiked: string
 ) => {
     if (await doesUserLike(userWhoLikes, userWhoIsLiked)) return
 
@@ -52,8 +51,8 @@ export const likeUser = async (
 }
 
 export const unlikeUser = async (
-    userWhoLikes: String,
-    userWhoIsLiked: String
+    userWhoLikes: string,
+    userWhoIsLiked: string
 ) => {
     if (!(await doesUserLike(userWhoLikes, userWhoIsLiked))) return
 
