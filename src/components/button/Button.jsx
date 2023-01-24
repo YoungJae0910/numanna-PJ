@@ -2,9 +2,14 @@ import React from "react"
 import styled from "styled-components"
 
 const Button = (props) => {
-    const { text, size, height, outline } = props
+    const { text, size, height, outline, onClick } = props
     return (
-        <ButtonBox size={size} height={height} outline={outline ? outline : ""}>
+        <ButtonBox
+            size={size}
+            height={height}
+            outline={outline ? outline : ""}
+            onClick={onClick}
+        >
             {text}
         </ButtonBox>
     )

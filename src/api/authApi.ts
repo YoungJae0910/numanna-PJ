@@ -139,7 +139,6 @@ export const getUsers = async () => {
 export class HashPassword {
     static v1(password: string) {
         let hash = 0
-        console.log(typeof password)
 
         for (let i = 0; i < password.length; i++) {
             let chr = password.charCodeAt(i)
