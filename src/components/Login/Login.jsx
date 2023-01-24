@@ -2,6 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import login from "../../assets/login.png"
+import { Link } from "react-router-dom"
 
 // import { Link } from "react-router-dom";
 
@@ -24,7 +25,9 @@ const Login = () => {
 
                 {/* 링크들어갈예정 */}
                 {/* <Link to="/"></Link> */}
-                <StText>아직 회원이 아니신가요?</StText>
+                <StyleLink to="/signup">
+                    <StText>아직 회원이 아니신가요?</StText>
+                </StyleLink>
             </StInputBox>
         </StBox>
     )
@@ -64,6 +67,7 @@ const StInputBox = styled.div`
     background-color: #ffe1e1;
     border-radius: 5px;
     margin: 20px;
+    padding-bottom: 20px;
 `
 
 const StInput = styled.input`
@@ -108,4 +112,7 @@ const StText = styled.span`
     font-size: 15px;
     margin-bottom: 30px;
     font-weight: 600;
+`
+const StyleLink = styled(Link)`
+    text-decoration: none;
 `
