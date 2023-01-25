@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
-import { getCurrentSessionId } from "../../api/authApi"
-import { getMessagesBetweenUsersBySentAtDescending } from "../../api/messagesApi"
+import { getCurrentSessionId } from "../../api/authApi.ts"
+import { addMessage } from "../../api/messagesApi.ts"
+import { getMessagesBetweenUsersBySentAtDescending } from "../../api/messagesApi.ts"
 import MatchingChat from "./MatchingChat"
 
 export default function Matching({ chatPartner }) {
@@ -28,6 +29,7 @@ export default function Matching({ chatPartner }) {
     }, [])
 
     const refreshChat = async () => {
+        console.log("a")
         const newChats = await getMessagesBetweenUsersBySentAtDescending(
             await getCurrentSessionId(),
             chatPartner
@@ -35,6 +37,16 @@ export default function Matching({ chatPartner }) {
         if (!newChats) return
 
         setChats(newChats)
+    }
+
+    const onSendMessage = async (cp, c) => {
+        const message = {
+            senderId: await getCurrentSessionId(),
+            recepientId: cp,
+            sentAt: Date.now(),
+            content: c
+        }
+        const res = await addMessage()
     }
 
     return (
@@ -54,7 +66,10 @@ export default function Matching({ chatPartner }) {
                         <ChatLeftDiv />
                     </ChatBoxLeftDiv>
                 </Chat>
-                <MatchingChat />
+                <MatchingChat
+                    onSendMessage={onSendMessage}
+                    chatPartner={chatPartner}
+                />
             </ContainerDiv>
         </WrapDiv>
     )
