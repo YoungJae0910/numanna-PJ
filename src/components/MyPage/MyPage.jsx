@@ -3,6 +3,7 @@ import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import favicon from "../../assets/favicon.png"
 import EditModal from "../Modal/EditModal"
+import { StLogo, StLogoBox } from "./styles"
 
 const MyPage = () => {
     // 정보수정은 모달창으로 만들기
@@ -48,16 +49,9 @@ const StBox = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-
     width: 100%;
     height: 100%;
 `
-const StLogo = styled.img`
-    max-width: 300px;
-    margin: 30px;
-    margin-top: 100px;
-`
-
 const StImg = styled.img`
     width: 150px;
     height: 150px;
@@ -65,13 +59,6 @@ const StImg = styled.img`
     /* margin-top: 70px; */
     border-radius: 50%;
 `
-
-const StLogoBox = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
 const StMainBox = styled.div`
     display: flex;
     justify-content: center;
@@ -79,11 +66,9 @@ const StMainBox = styled.div`
     flex-direction: column;
     border: 1px solid #fe6473;
     max-width: 90%;
-    /* height: 500px; */
     background-color: #ffe1e1;
     border-radius: 5px;
     margin: 20px;
-    /* padding-bottom: 20px; */
 `
 
 const StBtn = styled.button`
