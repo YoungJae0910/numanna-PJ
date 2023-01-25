@@ -29,7 +29,6 @@ export default function Matching({ chatPartner }) {
     }, [])
 
     const refreshChat = async () => {
-        console.log("a")
         const newChats = await getMessagesBetweenUsersBySentAtDescending(
             await getCurrentSessionId(),
             chatPartner
@@ -46,7 +45,8 @@ export default function Matching({ chatPartner }) {
             sentAt: Date.now(),
             content: c
         }
-        const res = await addMessage()
+        console.log(message)
+        const res = await addMessage(message)
     }
 
     return (
