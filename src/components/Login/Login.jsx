@@ -23,7 +23,7 @@ const Login = () => {
             return
         }
 
-        navigate("/")
+        navigate("/loginmain")
     }
 
     return (
