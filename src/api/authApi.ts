@@ -1,6 +1,5 @@
 import axios from "axios"
 import { getUsersUrl } from "./apiSettings"
-import uuid from "react-uuid"
 
 export type PersonalityType = {
     extroversionScore: number
@@ -8,13 +7,21 @@ export type PersonalityType = {
     alcoholScore: number
 }
 
+export enum Sex {
+    Male = "Male",
+    Female = "Female",
+    Other = "Other"
+}
+
 export type User = {
     id: string
     password: string
     name: string
-    displayName: string
+    nickName: string
     email: string
     age: number
+    sex: Sex
+    partnerSex: Sex
     personalityType: PersonalityType
 }
 
@@ -22,9 +29,11 @@ const NULL_USER: User = {
     id: "null",
     password: "null",
     name: "null",
-    displayName: "null",
+    nickName: "null",
     email: "null",
     age: 0,
+    sex: Sex["Other"],
+    partnerSex: Sex["Other"],
     personalityType: {
         extroversionScore: 0,
         smokingScore: 0,
@@ -94,7 +103,6 @@ export const updateUser = async (id: string, newUser: User) => {
 export const addUser = async (newUser: User) => {
     const userToAdd = newUser
     userToAdd.password = HashPassword.v1(newUser.password)
-
     const res = await axios.post(getUsersUrl(), userToAdd)
     if (!res) return
 
@@ -131,6 +139,7 @@ export const getUsers = async () => {
 export class HashPassword {
     static v1(password: string) {
         let hash = 0
+
         for (let i = 0; i < password.length; i++) {
             let chr = password.charCodeAt(i)
             hash = (hash << 5) - hash + chr

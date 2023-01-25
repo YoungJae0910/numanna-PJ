@@ -73,3 +73,17 @@ export const getAlcoholScoreDifferenceBetweenTwoUsers = async (
 
     return alcoholScoreDiff
 }
+
+export const canBeMatched = async (
+    firstUserId: string,
+    secondUserId: string
+) => {
+    const firstUser = await getUser(firstUserId)
+    const secondUser = await getUser(secondUserId)
+
+    if (!firstUser || !secondUser) return false
+    if (firstUser.sex !== secondUser.partnerSex) return false
+    if (secondUser.sex !== firstUser.partnerSex) return false
+
+    return true
+}
