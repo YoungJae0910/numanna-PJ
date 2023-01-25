@@ -1,11 +1,9 @@
 import React from "react"
 import styled from "styled-components"
-import Logout from "../Logout/Logout"
 
 const Partner = () => {
     return (
         <>
-            <Logout />
             <FlexBox>
                 <PartnerUl>
                     <PartnerLi>
