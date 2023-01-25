@@ -2,18 +2,18 @@ import axios from "axios"
 import { getMessagesUrl } from "./apiSettings"
 
 export type MessageWithoutId = {
-    senderId: String
-    recepientId: String
+    senderId: string
+    recepientId: string
     sentAt: number
-    content: String
+    content: string
 }
 
 export type Message = {
     id: number
-    senderId: String
-    recepientId: String
+    senderId: string
+    recepientId: string
     sentAt: number
-    content: String
+    content: string
 }
 
 export const addMessage = async (message: MessageWithoutId) => {
@@ -37,8 +37,8 @@ const compareMessagesBySentAtDescending = (a: Message, b: Message) => {
 }
 
 export const getMessagesBetweenUsersBySentAtDescending = async (
-    firstUserId: String,
-    secondUserId: String
+    firstUserId: string,
+    secondUserId: string
 ) => {
     const messages: Message[] = (await getMessages()) as Message[]
 
@@ -64,8 +64,8 @@ const compareMessagesBySentAtAscending = (a: Message, b: Message) => {
 }
 
 export const getMessagesBetweenUsersBySentAtAscending = async (
-    firstUserId: String,
-    secondUserId: String
+    firstUserId: string,
+    secondUserId: string
 ) => {
     const messages: Message[] = (await getMessages()) as Message[]
 
