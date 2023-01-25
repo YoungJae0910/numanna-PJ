@@ -1,9 +1,20 @@
-import { borderRadius } from "@mui/system"
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import favicon from "../../assets/favicon.png"
+import EditModal from "../Modal/EditModal"
+
 const MyPage = () => {
+    // 정보수정은 모달창으로 만들기
+
+    const [modalOpen, setModalOpen] = useState(false)
+
+    const openModal = () => {
+        setModalOpen(true)
+    }
+    const closeModal = () => {
+        setModalOpen(false)
+    }
     return (
         <StBox>
             <StLogoBox>
@@ -14,8 +25,17 @@ const MyPage = () => {
                 {/* 사진업로드될 부분 -임시로 로고 넣어둠 */}
                 <StImg src={favicon} />
                 {/* 유저 닉네임?또는 이름?이 들어올 부분 */}
-                <StText>user.name</StText>
-                <StBtn>정보수정</StBtn>
+                <StText>User.name</StText>
+                <StBtn
+                    onClick={() => {
+                        openModal()
+                    }}
+                >
+                    정보수정
+                </StBtn>
+
+                <EditModal open={modalOpen} close={closeModal}></EditModal>
+
                 <StBtn style={{ marginBottom: "20px" }}>탈퇴하기</StBtn>
             </StMainBox>
         </StBox>

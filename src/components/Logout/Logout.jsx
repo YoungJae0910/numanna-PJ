@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Link, useNavigate } from "react-router-dom"
-// import { logout } from "../../api/authApi"
+import { logout } from "../../api/authApi.ts"
 
 // 설문조사와 파트너선택페이지 오른쪽 상단에 들어갈 예정
 const Logout = () => {
@@ -17,7 +17,7 @@ const Logout = () => {
             {/* 2.로그아웃 구현하기 */}
             <StBtn
                 onClick={() => {
-                    // logout()
+                    logout()
                     navigate("/")
                 }}
             >
