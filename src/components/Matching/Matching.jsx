@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { getCurrentSessionId } from "../../api/authApi.ts"
 import { addMessage } from "../../api/messagesApi.ts"
 import { getMessagesBetweenUsersBySentAtDescending } from "../../api/messagesApi.ts"
 import MatchingChat from "./MatchingChat"
 
-export default function Matching({ chatPartner }) {
+export default function Matching() {
     const [interval, setInterval] = useState(1000)
-
+    const params = useParams()
+    const chatPartner = params.id
     const [chats, setChats] = useState([])
 
     const a = async () => {
@@ -29,6 +31,7 @@ export default function Matching({ chatPartner }) {
     }, [])
 
     const refreshChat = async () => {
+        console.log("a")
         const newChats = await getMessagesBetweenUsersBySentAtDescending(
             await getCurrentSessionId(),
             chatPartner
@@ -45,8 +48,7 @@ export default function Matching({ chatPartner }) {
             sentAt: Date.now(),
             content: c
         }
-        console.log(message)
-        const res = await addMessage(message)
+        const res = await addMessage()
     }
 
     return (
