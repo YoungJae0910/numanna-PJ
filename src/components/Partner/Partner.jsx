@@ -1,71 +1,42 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const Partner = () => {
+  const [items, setItems] = useState(Array.from({ length: 40 }));
+
+  const fetchData = () => {
+    setTimeout(() => {
+      setItems(items.concat(Array.from({ length: 50 })));
+    }, 1500);
+  };
   return (
-    <FlexBox>
-      <PartnerUl>
-        <PartnerLi>
-          <PartnerImg></PartnerImg>
-          <PartnerInfo>
-            <span>이름:</span>
-            <span>나이:</span>
-            <span>성별:</span>
-          </PartnerInfo>
-        </PartnerLi>
-        <PartnerLi>
-          <PartnerImg></PartnerImg>
-          <PartnerInfo>
-            <span>이름:</span>
-            <span>나이:</span>
-            <span>성별:</span>
-          </PartnerInfo>
-        </PartnerLi>
-        <PartnerLi>
-          <PartnerImg></PartnerImg>
-          <PartnerInfo>
-            <span>이름:</span>
-            <span>나이:</span>
-            <span>성별:</span>
-          </PartnerInfo>
-        </PartnerLi>
-        <PartnerLi>
-          <PartnerImg></PartnerImg>
-          <PartnerInfo>
-            <span>이름:</span>
-            <span>나이:</span>
-            <span>성별:</span>
-          </PartnerInfo>
-        </PartnerLi>
-        <PartnerLi>
-          <PartnerImg></PartnerImg>
-          <PartnerInfo>
-            <span>이름:</span>
-            <span>나이:</span>
-            <span>성별:</span>
-          </PartnerInfo>
-        </PartnerLi>
-        <PartnerLi>
-          <PartnerImg></PartnerImg>
-          <PartnerInfo>
-            <span>이름:</span>
-            <span>나이:</span>
-            <span>성별:</span>
-          </PartnerInfo>
-        </PartnerLi>
-      </PartnerUl>
-    </FlexBox>
+    <div>
+      <InfiniteScroll
+        dataLength={items.length}
+        next={fetchData}
+        hasMore={true}
+        // loader={<h4>Loading...</h4>}
+      >
+        <PartnerUl>
+          {items.map((i, index) => (
+            <PartnerLi key={index}>
+              <PartnerImg></PartnerImg>
+              <PartnerInfo>
+                <span>이름:</span>
+                <span>나이:</span>
+                <span>성별:</span>
+              </PartnerInfo>
+            </PartnerLi>
+          ))}
+        </PartnerUl>
+      </InfiniteScroll>
+    </div>
   );
 };
 
 export default Partner;
-
-const FlexBox = styled.div`
-  width: 100%;
-  height: 700px;
-  background-color: white;
-  display: flex;
-`;
 
 const PartnerUl = styled.ul`
   width: 90%;
