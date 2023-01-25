@@ -3,7 +3,6 @@ import React from "react"
 import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import favicon from "../../assets/favicon.png"
-import login from "../../assets/login.png"
 const MyPage = () => {
     return (
         <StBox>
@@ -11,16 +10,14 @@ const MyPage = () => {
                 <StLogo src={logo} />
             </StLogoBox>
 
-            <StInputBox>
+            <StMainBox>
                 {/* 사진업로드될 부분 -임시로 로고 넣어둠 */}
-                <StLogo
-                    src={login}
-                    style={{ maxWidth: "40%", borderRadius: "50%" }}
-                />
-
+                <StImg src={favicon} />
+                {/* 유저 닉네임?또는 이름?이 들어올 부분 */}
+                <StText>user.name</StText>
                 <StBtn>정보수정</StBtn>
-                <StBtn>탈퇴하기</StBtn>
-            </StInputBox>
+                <StBtn style={{ marginBottom: "20px" }}>탈퇴하기</StBtn>
+            </StMainBox>
         </StBox>
     )
 }
@@ -41,13 +38,21 @@ const StLogo = styled.img`
     margin-top: 100px;
 `
 
+const StImg = styled.img`
+    width: 150px;
+    height: 150px;
+    margin: 30px 80px;
+    /* margin-top: 70px; */
+    border-radius: 50%;
+`
+
 const StLogoBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 `
 
-const StInputBox = styled.div`
+const StMainBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -58,7 +63,7 @@ const StInputBox = styled.div`
     background-color: #ffe1e1;
     border-radius: 5px;
     margin: 20px;
-    padding-bottom: 20px;
+    /* padding-bottom: 20px; */
 `
 
 const StBtn = styled.button`
@@ -67,7 +72,7 @@ const StBtn = styled.button`
     color: white;
     background-color: #f25a5a;
     padding: 10px;
-    margin: 20px;
+    margin: 10px;
     border: 2px solid #f6809f;
     font-weight: 600;
     outline: none;
@@ -75,4 +80,11 @@ const StBtn = styled.button`
         background-color: white;
         color: #f25a5a;
     }
+`
+
+const StText = styled.span`
+    color: #f25a5a;
+    font-size: 15px;
+    margin-bottom: 10px;
+    font-weight: 600;
 `
