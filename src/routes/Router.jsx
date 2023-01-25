@@ -13,14 +13,14 @@ export default function Router() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/survey" element={<Survey />} />
                 <Route path="/" element={<Main />} />
-                <Route path="/matching/:id" element={<Matching />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/map" element={<Map />} />
-                <Route path="/partner" element={<Partner />} />
-                <Route path="/loginmain" element={<LoginMain />} />
+                <Route path="matching/:id" element={<Matching />} />
+                <Route path="signup" element={<SignUp />} />
+                <Route path="login" element={<Login />} />
+                <Route path="map" element={<Map />} />
+                <Route path="partner" element={<Partner />} />
+                <Route path="loginmain" element={<LoginMain />} />
+                <Route path="survey" element={<Survey />} />
             </Routes>
         </BrowserRouter>
     )

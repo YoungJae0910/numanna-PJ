@@ -25,10 +25,15 @@ export default function SignUpModal({
         const newUser = {
             name,
             nickName,
-            age,
+            age: Number(age),
             id,
             password,
-            email
+            email,
+            personalityType: {
+                ExtroversionScore: 0,
+                SmokingScore: 0,
+                AlcoholScore: 0
+            }
         }
 
         console.log(typeof password)
