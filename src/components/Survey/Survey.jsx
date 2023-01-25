@@ -12,8 +12,10 @@ import {
 } from "../../api/authApi.ts"
 import { SERVER_URL } from "../../api/apiSettings"
 import { useNavigate } from "react-router-dom"
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 
 const Survey = () => {
+    const percentage = 66
     const navigate = useNavigate()
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -23,6 +25,45 @@ const Survey = () => {
     const [extroversionScore, setExtroversionScore] = useState(0)
     const [alcoholScore, setAlcoholScore] = useState(0)
     const [smokingScore, setSmokingScore] = useState(0)
+
+    const getExtroversionScore = () => {
+        return window.sessionStorage.getItem("extroversionScore")
+            ? Number(window.sessionStorage.extroversionScore)
+            : 0
+    }
+
+    const getAlcoholScore = () => {
+        return window.sessionStorage.getItem("alcoholScore")
+            ? Number(window.sessionStorage.alcoholScore)
+            : 0
+    }
+
+    const getSmokingScore = () => {
+        return window.sessionStorage.getItem("smokingScore")
+            ? Number(window.sessionStorage.smokingScore)
+            : 0
+    }
+
+    const incrementExtroversionScore = (amount) => {
+        window.sessionStorage.setItem(
+            "extroversionScore",
+            `${getExtroversionScore() + amount}`
+        )
+    }
+
+    const incrementAlcoholScore = (amount) => {
+        window.sessionStorage.setItem(
+            "alcoholScore",
+            `${getAlcoholScore() + amount}`
+        )
+    }
+
+    const incrementSmokingScore = (amount) => {
+        window.sessionStorage.setItem(
+            "smokingScore",
+            `${getSmokingScore() + amount}`
+        )
+    }
 
     const fetchQuestions = async () => {
         const res = await axios.get(SERVER_URL + "/personalitySurveyQuestions")
@@ -61,49 +102,29 @@ const Survey = () => {
     const onClicked = (answer) => {
         if (questions.length < 1) return
 
-        // 누적값이 아닌 최신값만 불러와지는 오류 있음
-
-        console.log("===")
-        console.log(extroversionScore)
-        console.log(alcoholScore)
-        console.log(smokingScore)
-        console.log("===")
-
-        console.log(question)
-
         switch (question.personalityScoreType) {
             case "Extroversion":
                 setExtroversionScore(
-                    extroversionScore + answer
-                        ? question.trueValue
-                        : question.falseValue
+                    incrementExtroversionScore(
+                        answer ? question.trueValue : question.falseValue
+                    )
                 )
                 break
 
             case "Alcohol":
-                setAlcoholScore(
-                    alcoholScore + answer
-                        ? question.trueValue
-                        : question.falseValue
+                incrementAlcoholScore(
+                    answer ? question.trueValue : question.falseValue
                 )
                 break
 
             case "Smoking":
-                setSmokingScore(
-                    smokingScore + answer
-                        ? question.trueValue
-                        : question.falseValue
+                incrementSmokingScore(
+                    answer ? question.trueValue : question.falseValue
                 )
                 break
             default:
                 break
         }
-
-        console.log("===")
-        console.log(extroversionScore)
-        console.log(alcoholScore)
-        console.log(smokingScore)
-        console.log("===")
 
         handleGoToNextQuestion()
     }
@@ -115,14 +136,16 @@ const Survey = () => {
             const currentUserId = await getCurrentSessionId()
 
             const currentUser = await getUser(currentUserId)
-            currentUser.personalityType.ExtroversionScore = extroversionScore
-            currentUser.personalityType.AlcoholScore = alcoholScore
-            currentUser.personalityType.SmokingScore = smokingScore
+            console.log(currentUser)
+            currentUser.personalityType.ExtroversionScore =
+                getExtroversionScore()
+            currentUser.personalityType.AlcoholScore = getAlcoholScore()
+            currentUser.personalityType.SmokingScore = getSmokingScore()
 
             const res = await updateUser(currentUserId, currentUser)
             if (!res) return
 
-            navigate("/")
+            navigate("/partner")
         }
 
         // go to next question
@@ -150,6 +173,27 @@ const Survey = () => {
                         height={"primary"}
                         text={"No"}
                         onClick={onNoClicked}
+                    />
+                    <SmallCircularProgressbar
+                        value={
+                            questions.length > 0
+                                ? (currentQuestionIndex / questions.length) *
+                                  100
+                                : 0
+                        }
+                        styles={buildStyles({
+                            // Rotation of path and trail, in number of turns (0-1)
+                            rotation: 0,
+
+                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                            strokeLinecap: "round",
+
+                            // Text size
+                            textSize: "30px",
+
+                            // How long animation takes to go from one percentage to another, in seconds
+                            pathTransitionDuration: 0.5
+                        })}
                     />
                 </SurveyAnswerBox>
             </SurveyContainer>
@@ -186,4 +230,17 @@ const SurveyAnswerBox = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 10%;
+`
+const SmallCircularProgressbar = styled(CircularProgressbar)`
+    width: 100px;
+
+    .CircularProgressbar-path {
+        stroke: #f94772;
+    }
+    .CircularProgressbar-trail {
+        stroke: gray;
+    }
+    .CircularProgressbar-text {
+        fill: black;
+    }
 `
