@@ -24,6 +24,45 @@ const Survey = () => {
     const [alcoholScore, setAlcoholScore] = useState(0)
     const [smokingScore, setSmokingScore] = useState(0)
 
+    const getExtroversionScore = () => {
+        return window.sessionStorage.getItem("extroversionScore")
+            ? Number(window.sessionStorage.extroversionScore)
+            : 0
+    }
+
+    const getAlcoholScore = () => {
+        return window.sessionStorage.getItem("alcoholScore")
+            ? Number(window.sessionStorage.alcoholScore)
+            : 0
+    }
+
+    const getSmokingScore = () => {
+        return window.sessionStorage.getItem("smokingScore")
+            ? Number(window.sessionStorage.smokingScore)
+            : 0
+    }
+
+    const incrementExtroversionScore = (amount) => {
+        window.sessionStorage.setItem(
+            "extroversionScore",
+            `${getExtroversionScore() + amount}`
+        )
+    }
+
+    const incrementAlcoholScore = (amount) => {
+        window.sessionStorage.setItem(
+            "alcoholScore",
+            `${getAlcoholScore() + amount}`
+        )
+    }
+
+    const incrementSmokingScore = (amount) => {
+        window.sessionStorage.setItem(
+            "smokingScore",
+            `${getSmokingScore() + amount}`
+        )
+    }
+
     const fetchQuestions = async () => {
         const res = await axios.get(SERVER_URL + "/personalitySurveyQuestions")
         if (!res) return
@@ -61,49 +100,56 @@ const Survey = () => {
     const onClicked = (answer) => {
         if (questions.length < 1) return
 
-        // 누적값이 아닌 최신값만 불러와지는 오류 있음
+        // console.log("===")
+        // console.log(getExtroversionScore())
+        // console.log(getAlcoholScore())
+        // console.log(getSmokingScore())
+        // console.log("===")
 
-        console.log("===")
-        console.log(extroversionScore)
-        console.log(alcoholScore)
-        console.log(smokingScore)
-        console.log("===")
-
-        console.log(question)
+        // console.log(question)
 
         switch (question.personalityScoreType) {
             case "Extroversion":
                 setExtroversionScore(
-                    extroversionScore + answer
-                        ? question.trueValue
-                        : question.falseValue
+                    // extroversionScore + answer
+                    //     ? question.trueValue
+                    //     : question.falseValue
+                    incrementExtroversionScore(
+                        answer ? question.trueValue : question.falseValue
+                    )
                 )
                 break
 
             case "Alcohol":
-                setAlcoholScore(
-                    alcoholScore + answer
-                        ? question.trueValue
-                        : question.falseValue
+                // setAlcoholScore(
+                //     alcoholScore + answer
+                //         ? question.trueValue
+                //         : question.falseValue
+                // )
+                incrementAlcoholScore(
+                    answer ? question.trueValue : question.falseValue
                 )
                 break
 
             case "Smoking":
-                setSmokingScore(
-                    smokingScore + answer
-                        ? question.trueValue
-                        : question.falseValue
+                // setSmokingScore(
+                //     smokingScore + answer
+                //         ? question.trueValue
+                //         : question.falseValue
+                // )
+                incrementSmokingScore(
+                    answer ? question.trueValue : question.falseValue
                 )
                 break
             default:
                 break
         }
 
-        console.log("===")
-        console.log(extroversionScore)
-        console.log(alcoholScore)
-        console.log(smokingScore)
-        console.log("===")
+        // console.log("===")
+        // console.log(getExtroversionScore())
+        // console.log(getAlcoholScore())
+        // console.log(getSmokingScore())
+        // console.log("===")
 
         handleGoToNextQuestion()
     }
@@ -115,9 +161,10 @@ const Survey = () => {
             const currentUserId = await getCurrentSessionId()
 
             const currentUser = await getUser(currentUserId)
-            currentUser.personalityType.ExtroversionScore = extroversionScore
-            currentUser.personalityType.AlcoholScore = alcoholScore
-            currentUser.personalityType.SmokingScore = smokingScore
+            currentUser.personalityType.ExtroversionScore =
+                getExtroversionScore()
+            currentUser.personalityType.AlcoholScore = getAlcoholScore()
+            currentUser.personalityType.SmokingScore = getSmokingScore()
 
             const res = await updateUser(currentUserId, currentUser)
             if (!res) return
