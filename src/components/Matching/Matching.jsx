@@ -1,8 +1,42 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import { getCurrentSessionId } from "../../api/authApi"
+import { getMessagesBetweenUsersBySentAtDescending } from "../../api/messagesApi"
 import MatchingChat from "./MatchingChat"
 
-export default function Matching() {
+export default function Matching({ chatPartner }) {
+    const [interval, setInterval] = useState(1000)
+
+    const [chats, setChats] = useState([])
+
+    const a = async () => {
+        setTimeout(() => {
+            refreshChat()
+            b()
+        }, interval)
+    }
+
+    const b = async () => {
+        setTimeout(() => {
+            refreshChat()
+            a()
+        }, interval)
+    }
+
+    useEffect(() => {
+        a()
+    }, [])
+
+    const refreshChat = async () => {
+        const newChats = await getMessagesBetweenUsersBySentAtDescending(
+            await getCurrentSessionId(),
+            chatPartner
+        )
+        if (!newChats) return
+
+        setChats(newChats)
+    }
+
     return (
         <WrapDiv>
             <ContainerDiv>
