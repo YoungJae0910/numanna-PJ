@@ -1,4 +1,5 @@
 import React from "react"
+
 import { useState } from "react"
 import styled from "styled-components"
 import InfiniteScroll from "react-infinite-scroll-component"
@@ -36,6 +37,7 @@ const Partner = () => {
     )
 }
 
+
 const PartnerUl = styled.ul`
     width: 90%;
     height: 90%;
@@ -43,7 +45,9 @@ const PartnerUl = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: center;
+
     overflow: scroll;
+
 `
 
 const PartnerLi = styled.li`
@@ -54,11 +58,14 @@ const PartnerLi = styled.li`
     padding: 10px;
     box-sizing: border-box;
     border-radius: 10px;
+
     background-color: #ffe1e1;
     display: flex;
     justify-content: space-around;
 `
+
 export default Partner
+
 
 const PartnerImg = styled.div`
     width: 40%;

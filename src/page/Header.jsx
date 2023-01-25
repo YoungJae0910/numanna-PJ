@@ -3,7 +3,7 @@ import { Container } from "@mui/system"
 import styled from "styled-components"
 import logo_empty from "../assets/logo_empty.png"
 import numanna_logo from "../assets/numanna_logo.png"
-
+import Logout from "../components/Logout/Logout"
 const Header = () => {
     return (
         <HeaderWrap>
@@ -19,6 +19,7 @@ const Header = () => {
                     <img src={logo_empty} alt="로고" height="40px" />
                     <img src={numanna_logo} alt="글씨로고" height="40px" />
                 </Logo>
+                <Logout />
             </Container>
         </HeaderWrap>
     )

@@ -1,0 +1,56 @@
+/* 마지막에 컴퍼넌트화시키기 */
+
+.Modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(239, 189, 189, 0.7);
+    font-size: larger;
+}
+
+.Modal > section {
+    width: 90%;
+    max-width: 500px;
+    max-height: 750px;
+    margin: 0 auto;
+    /* border-radius: 0.3rem; */
+    border-radius: 7px;
+    background-color: #fff;
+    animation: modal-show 0.3s;
+    overflow: hidden;
+}
+
+.Modal.OpenModal {
+    display: flex;
+    align-items: center;
+    animation: modal-bg-show 0.3s;
+}
+
+@keyframes modal-show {
+    from {
+        opacity: 0;
+        margin-top: -50px;
+    }
+    to {
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+@keyframes modal-bg-show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (width < 800px) {
+    .Post {
+        max-width: 60vw;
+    }
+}
