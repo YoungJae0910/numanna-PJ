@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import styled from "styled-components"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { getUsers } from "../../api/authApi.ts"
+import Header from "../../page/Header"
 
 const Partner = () => {
     const [items, setItems] = useState(Array.from({ length: 7 }))
@@ -24,6 +25,7 @@ const Partner = () => {
 
     return (
         <div>
+            <Header />
             <InfiniteScroll
                 dataLength={items.length}
                 next={fetchData}
