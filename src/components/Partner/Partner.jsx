@@ -12,7 +12,6 @@ const Partner = () => {
     const fetchData = async () => {
         const data = await getUsers()
         setUsers(data)
-        console.log(data)
 
         setTimeout(() => {
             setItems(items.concat(Array.from({ length: 7 })))
