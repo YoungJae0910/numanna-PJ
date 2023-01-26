@@ -1,16 +1,31 @@
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
-export default function MatchingChat() {
+export default function MatchingChat({
+    onSendMessage,
+    chatPartner = "admin2"
+}) {
+    const [message, setMessage] = useState("")
     return (
-        <WrapInput>
-            <SubmitInput></SubmitInput>
-            <SubmitButton>보내기</SubmitButton>
+        <WrapInput
+            onSubmit={(e) => {
+                e.preventDefault()
+                onSendMessage(chatPartner, message)
+                setMessage("")
+            }}
+        >
+            <SubmitInput
+                value={message}
+                onChange={(e) => {
+                    setMessage(e.target.value)
+                }}
+            ></SubmitInput>
+            <SubmitButton type="submit">보내기</SubmitButton>
         </WrapInput>
     )
 }
 
-const WrapInput = styled.div`
+const WrapInput = styled.form`
     width: 100%;
     height: 200px;
     background-color: white;
