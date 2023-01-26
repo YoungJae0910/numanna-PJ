@@ -55,6 +55,8 @@ export const getMessagesBetweenUsersBySentAtDescending = async (
         ...secondToFirstMessages
     ]
     results.sort(compareMessagesBySentAtDescending)
+
+    return results
 }
 
 const compareMessagesBySentAtAscending = (a: Message, b: Message) => {
@@ -82,4 +84,6 @@ export const getMessagesBetweenUsersBySentAtAscending = async (
         ...secondToFirstMessages
     ]
     results.sort(compareMessagesBySentAtAscending)
+
+    return results
 }
