@@ -9,6 +9,7 @@ import Map from "../components/Map/Map"
 import Partner from "../components/Partner/Partner"
 import MyPage from "../components/MyPage/MyPage"
 import Logout from "../components/Logout/Logout"
+import ImageUpload from "../components/Firebase/ImageUpload"
 
 export default function Router() {
     return (
@@ -23,6 +24,7 @@ export default function Router() {
                 <Route path="/mypage" element={<MyPage />} />
                 <Route path="/logout" element={<Logout />} />
                 <Route path="survey" element={<Survey />} />
+                <Route path="/upload" element={<ImageUpload />} />
             </Routes>
         </BrowserRouter>
     )
