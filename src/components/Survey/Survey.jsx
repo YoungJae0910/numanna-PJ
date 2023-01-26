@@ -12,8 +12,10 @@ import {
 } from "../../api/authApi.ts"
 import { SERVER_URL } from "../../api/apiSettings"
 import { useNavigate } from "react-router-dom"
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 
 const Survey = () => {
+    const percentage = 66
     const navigate = useNavigate()
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -100,20 +102,9 @@ const Survey = () => {
     const onClicked = (answer) => {
         if (questions.length < 1) return
 
-        // console.log("===")
-        // console.log(getExtroversionScore())
-        // console.log(getAlcoholScore())
-        // console.log(getSmokingScore())
-        // console.log("===")
-
-        // console.log(question)
-
         switch (question.personalityScoreType) {
             case "Extroversion":
                 setExtroversionScore(
-                    // extroversionScore + answer
-                    //     ? question.trueValue
-                    //     : question.falseValue
                     incrementExtroversionScore(
                         answer ? question.trueValue : question.falseValue
                     )
@@ -121,22 +112,12 @@ const Survey = () => {
                 break
 
             case "Alcohol":
-                // setAlcoholScore(
-                //     alcoholScore + answer
-                //         ? question.trueValue
-                //         : question.falseValue
-                // )
                 incrementAlcoholScore(
                     answer ? question.trueValue : question.falseValue
                 )
                 break
 
             case "Smoking":
-                // setSmokingScore(
-                //     smokingScore + answer
-                //         ? question.trueValue
-                //         : question.falseValue
-                // )
                 incrementSmokingScore(
                     answer ? question.trueValue : question.falseValue
                 )
@@ -144,12 +125,6 @@ const Survey = () => {
             default:
                 break
         }
-
-        // console.log("===")
-        // console.log(getExtroversionScore())
-        // console.log(getAlcoholScore())
-        // console.log(getSmokingScore())
-        // console.log("===")
 
         handleGoToNextQuestion()
     }
@@ -161,6 +136,7 @@ const Survey = () => {
             const currentUserId = await getCurrentSessionId()
 
             const currentUser = await getUser(currentUserId)
+            console.log(currentUser)
             currentUser.personalityType.ExtroversionScore =
                 getExtroversionScore()
             currentUser.personalityType.AlcoholScore = getAlcoholScore()
@@ -169,7 +145,7 @@ const Survey = () => {
             const res = await updateUser(currentUserId, currentUser)
             if (!res) return
 
-            navigate("/")
+            navigate("/partner")
         }
 
         // go to next question
@@ -197,6 +173,27 @@ const Survey = () => {
                         height={"primary"}
                         text={"No"}
                         onClick={onNoClicked}
+                    />
+                    <SmallCircularProgressbar
+                        value={
+                            questions.length > 0
+                                ? (currentQuestionIndex / questions.length) *
+                                  100
+                                : 0
+                        }
+                        styles={buildStyles({
+                            // Rotation of path and trail, in number of turns (0-1)
+                            rotation: 0,
+
+                            // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                            strokeLinecap: "round",
+
+                            // Text size
+                            textSize: "30px",
+
+                            // How long animation takes to go from one percentage to another, in seconds
+                            pathTransitionDuration: 0.5
+                        })}
                     />
                 </SurveyAnswerBox>
             </SurveyContainer>
@@ -233,4 +230,17 @@ const SurveyAnswerBox = styled.div`
     align-items: center;
     flex-direction: column;
     gap: 10%;
+`
+const SmallCircularProgressbar = styled(CircularProgressbar)`
+    width: 100px;
+
+    .CircularProgressbar-path {
+        stroke: #f94772;
+    }
+    .CircularProgressbar-trail {
+        stroke: gray;
+    }
+    .CircularProgressbar-text {
+        fill: black;
+    }
 `
