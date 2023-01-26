@@ -11,6 +11,7 @@ export default function MatchingChat({
             onSubmit={(e) => {
                 e.preventDefault()
                 onSendMessage(chatPartner, message)
+                setMessage("")
             }}
         >
             <SubmitInput
