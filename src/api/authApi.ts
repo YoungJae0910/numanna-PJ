@@ -17,6 +17,7 @@ export type User = {
     id: string
     password: string
     name: string
+    profileImageUrl: string
     nickName: string
     email: string
     age: number
@@ -30,6 +31,7 @@ const NULL_USER: User = {
     password: "null",
     name: "null",
     nickName: "null",
+    profileImageUrl: "null",
     email: "null",
     age: 0,
     sex: Sex["Other"],
