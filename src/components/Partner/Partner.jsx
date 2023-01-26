@@ -1,32 +1,42 @@
 import React from "react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import styled from "styled-components"
 import InfiniteScroll from "react-infinite-scroll-component"
+import { getUsers } from "../../api/authApi.ts"
 
 const Partner = () => {
-    const [items, setItems] = useState(Array.from({ length: 40 }))
+    const [items, setItems] = useState(Array.from({ length: 7 }))
+    const [users, setUsers] = useState([])
 
-    const fetchData = () => {
+    const fetchData = async () => {
+        const data = await getUsers()
+        setUsers(data)
+        console.log(data)
+
         setTimeout(() => {
-            setItems(items.concat(Array.from({ length: 50 })))
+            setItems(items.concat(Array.from({ length: 7 })))
         }, 1500)
     }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
     return (
         <div>
             <InfiniteScroll
                 dataLength={items.length}
                 next={fetchData}
                 hasMore={true}
-                // loader={<h4>Loading...</h4>}
             >
                 <PartnerUl>
-                    {items.map((i, index) => (
+                    {users.map((user, index) => (
                         <PartnerLi key={index}>
                             <PartnerImg></PartnerImg>
                             <PartnerInfo>
-                                <span>이름:</span>
-                                <span>나이:</span>
-                                <span>성별:</span>
+                                <span>이름:{user.nickName}</span>
+                                <span>나이:{user.age}</span>
+                                <span>성별:{user.sex}</span>
                             </PartnerInfo>
                         </PartnerLi>
                     ))}
