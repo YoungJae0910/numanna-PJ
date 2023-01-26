@@ -17,7 +17,9 @@ export default function SignUpModal({
     age,
     id,
     password,
-    email
+    email,
+    sex,
+    partnerSex
 }) {
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
@@ -29,6 +31,8 @@ export default function SignUpModal({
             id,
             password,
             email,
+            sex,
+            partnerSex,
             personalityType: {
                 ExtroversionScore: 0,
                 SmokingScore: 0,
