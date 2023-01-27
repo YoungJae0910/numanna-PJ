@@ -67,6 +67,8 @@ const Edit = (props) => {
 
         if (!res) return
 
+        window.location.reload()
+
         return res.data
     }
 
@@ -169,7 +171,7 @@ const Edit = (props) => {
                             if (!isNickName) return
                             if (!isEmail) return
                             close()
-                            updateUser()
+                            onUpdateUser()
                         }}
                     >
                         저장
