@@ -79,6 +79,7 @@ const PartnerLi = styled.li`
     background-color: #ffe1e1;
     display: flex;
     justify-content: space-around;
+    box-shadow: 0 17px 20px -18px rgba(0, 0, 0, 1);
 `
 
 const PartnerImg = styled.div`
