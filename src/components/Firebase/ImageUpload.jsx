@@ -66,7 +66,7 @@ export default function ImageUpload() {
 
 const StBtn = styled.button`
     width: 40%;
-    height: 10px;
+    height: 30px;
     border-radius: 5px;
     color: #f25a5a;
     background-color: white;

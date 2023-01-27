@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import Edit from "../MyPage/Edit"
 import "./editmodal.css"
 
