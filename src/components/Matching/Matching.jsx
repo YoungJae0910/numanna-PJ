@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 import { getCurrentSessionId } from "../../api/authApi.ts"
 import { addMessage } from "../../api/messagesApi.ts"
@@ -46,7 +46,6 @@ export default function Matching() {
             setLIRMI(-1)
         }
 
-        console.log("a")
         const newChats = await getMessagesBetweenUsersBySentAtAscending(
             await getCurrentSessionId(),
             chatPartner
@@ -66,6 +65,45 @@ export default function Matching() {
         const res = await addMessage(message)
 
         lowerInterval()
+    }
+
+    const navigate = useNavigate()
+
+    const formatContent = (content) => {
+        let result = content
+
+        // while (result.includes("@map")) {
+        //     const splitted = result.split("@map ")
+        //     const splitted2 = splitted[1].split(" ")
+
+        //     const lattitude = splitted[0]
+        //     const longtitude = splitted2[1]
+
+        //     const googleMapsUrl = `https://maps.google.com/maps?z=12&t=m&q=loc:${lattitude}+${longtitude}`
+
+        //     result = result.replace(
+        //         `@map ${lattitude} ${longtitude}`,
+        //         `<a href="${googleMapsUrl}">위치 확인하기</a>`
+        //     )
+        // }
+
+        if (result.includes("@map")) {
+            // const latLng = `${result.split("@map ")[1].split(" ")[0]} ${
+            //     result.split("@map ")[1].split(" ")[1]
+            // }`
+            // const lat = latLng.split(" ")[0]
+            // const lng = latLng.split(" ")[1]
+
+            // const googleMapsUrl = `https://maps.google.com/maps?z=12&t=m&q=loc:${lat}+${lng}`
+            const googleMapsUrl = result.split("@map ")[1].split(" ")[0]
+
+            result = result.replace(
+                `@map ${googleMapsUrl}`,
+                `<a target="_blank" href="${googleMapsUrl}"} style={{cursor: "pointer"}}>위치 확인하기</a>`
+            )
+        }
+
+        return <p dangerouslySetInnerHTML={{ __html: result }}></p>
     }
 
     return (
@@ -88,12 +126,16 @@ export default function Matching() {
                         return c.recepientId === chatPartner ? (
                             <ChatBoxRightDiv>
                                 <ChatRightDiv />
-                                <ChatRightText>{c.content}</ChatRightText>
+                                <ChatRightText>
+                                    {formatContent(c.content)}
+                                </ChatRightText>
                             </ChatBoxRightDiv>
                         ) : (
                             <ChatBoxLeftDiv>
                                 <ChatLeftDiv />
-                                <ChatLeftText>{c.content}</ChatLeftText>
+                                <ChatLeftText>
+                                    {formatContent(c.content)}
+                                </ChatLeftText>
                             </ChatBoxLeftDiv>
                         )
                     })}
