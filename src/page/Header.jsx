@@ -16,7 +16,6 @@ const Header = () => {
                     justifyContent: "space-between",
                     alignItems: "center"
                 }}
-
                 style={{ cursor: "pointer" }}
             >
                 <Logo
@@ -24,7 +23,7 @@ const Header = () => {
                         navigate("/")
                     }}
                 >
-                    <img src={logo_empty} alt="로고" height="40px" />
+                    {/* <img src={logo_empty} alt="로고" height="40px" /> */}
                     <img src={numanna_logo} alt="글씨로고" height="40px" />
                 </Logo>
                 <Logout />
