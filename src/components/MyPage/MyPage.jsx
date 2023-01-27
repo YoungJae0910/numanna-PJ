@@ -8,6 +8,7 @@ import { getCurrentSessionId, getUser } from "../../api/authApi.ts"
 import { deleteUser } from "../../api/authApi.ts"
 import { useNavigate } from "react-router-dom"
 import ImageUpload from "../Firebase/ImageUpload"
+import { async } from "@firebase/util"
 
 const MyPage = () => {
     // 정보수정은 모달창으로 만들기
@@ -44,7 +45,22 @@ const MyPage = () => {
         }
     }
 
-    // 닉네임
+    // 닉네임 표시
+
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        fetchUser()
+    }, [])
+
+    const fetchUser = async () => {
+        const id = await getCurrentSessionId()
+        const u = await getUser(id)
+
+        console.log(u)
+
+        setUser(u)
+    }
+    console.log(user)
 
     return (
         <StBox>
@@ -59,7 +75,7 @@ const MyPage = () => {
                 <ImageUpload />
 
                 {/* 유저 닉네임?또는 이름?이 들어올 부분 */}
-                <StText>user.nickname</StText>
+                <StText>{user.nickName}</StText>
                 <StBtn
                     onClick={() => {
                         openModal()
