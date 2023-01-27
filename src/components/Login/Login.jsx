@@ -19,11 +19,11 @@ const Login = () => {
         console.log(res)
 
         if (!res) {
-            alert("로그인 실패!")
+            alert("로그인 실패")
             return
         }
 
-        navigate("/survey")
+        navigate("/loginmain")
     }
 
     return (
