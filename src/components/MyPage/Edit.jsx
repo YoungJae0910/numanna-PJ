@@ -56,7 +56,7 @@ const Edit = (props) => {
 
     // 정보 변경
 
-    const updateUser = async () => {
+    const onUpdateUser = async () => {
         // const id = await getCurrentSessionId()
         // const editUser = { nickName, email }
         // const res = await axios.put(getUsersUrl() + "/" + id, editUser)
@@ -169,7 +169,7 @@ const Edit = (props) => {
                             if (!isNickName) return
                             if (!isEmail) return
 
-                            updateUser()
+                            onUpdateUser()
                             close()
                         }}
                     >
