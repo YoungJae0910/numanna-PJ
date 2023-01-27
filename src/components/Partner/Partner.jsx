@@ -2,12 +2,15 @@ import React from "react"
 import { useState, useEffect } from "react"
 import styled from "styled-components"
 import InfiniteScroll from "react-infinite-scroll-component"
-import { getUsers } from "../../api/authApi.ts"
+import { getUsers, getCurrentSessionId, getUser } from "../../api/authApi.ts"
 import Header from "../../page/Header"
+import { getScoreDiffInfoBetweenTwoUsers } from "../../matching/matching.ts"
 
 const Partner = () => {
     const [items, setItems] = useState(Array.from({ length: 7 }))
     const [users, setUsers] = useState([])
+    const [self, setSelf] = useState({})
+    const [selfLoaded, setSelfLoaded] = useState(false)
 
     const fetchData = async () => {
         const data = await getUsers()
@@ -23,6 +26,16 @@ const Partner = () => {
         fetchData()
     }, [])
 
+    const fetchSelf = async () => {
+        const res = await getUser(await getCurrentSessionId())
+        setSelf(res)
+        setSelfLoaded(true)
+    }
+
+    useEffect(() => {
+        fetchSelf()
+    }, [])
+
     return (
         <>
             <Header />
@@ -33,18 +46,26 @@ const Partner = () => {
                 hasMore={true}
             >
                 <StUlBox>
-                    <PartnerUl>
-                        {users.map((user, index) => (
-                            <PartnerLi key={index}>
-                                <PartnerImg></PartnerImg>
-                                <PartnerInfo>
-                                    <span>이름:{user.nickName}</span>
-                                    <span>나이:{user.age}</span>
-                                    <span>성별:{user.sex}</span>
-                                </PartnerInfo>
-                            </PartnerLi>
-                        ))}
-                    </PartnerUl>
+                    {users.length > 0 && selfLoaded && (
+                        <PartnerUl>
+                            {users.map((user, index) => (
+                                <PartnerLi key={index}>
+                                    <PartnerImg></PartnerImg>
+                                    <PartnerInfo>
+                                        <span>이름:{user.nickName}</span>
+                                        <span>나이:{user.age}</span>
+                                        <span>성별:{user.sex}</span>
+                                        <span>
+                                            {getScoreDiffInfoBetweenTwoUsers(
+                                                self,
+                                                user
+                                            )}
+                                        </span>
+                                    </PartnerInfo>
+                                </PartnerLi>
+                            ))}
+                        </PartnerUl>
+                    )}
                 </StUlBox>
             </InfiniteScroll>
         </>
