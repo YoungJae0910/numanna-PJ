@@ -69,7 +69,7 @@ export default function SignUpModal({
             >
                 <ModalText>회원가입을 축하드립니다!!</ModalText>
                 <Link to={"/Survey"}>
-                    <FinishBtn>로그인하러가기!</FinishBtn>
+                    <FinishBtn>회원가입 하러 가기!</FinishBtn>
                 </Link>
             </ModalBox>
         </>
