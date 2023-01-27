@@ -1,9 +1,12 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import logo from "../../assets/logo.png"
 import favicon from "../../assets/favicon.png"
 import EditModal from "../Modal/EditModal"
 import { StLogo, StLogoBox } from "./styles"
+import { getCurrentSessionId } from "../../api/authApi.ts"
+import { deleteUser } from "../../api/authApi.ts"
+import { useNavigate } from "react-router-dom"
 
 const MyPage = () => {
     // 정보수정은 모달창으로 만들기
@@ -16,6 +19,34 @@ const MyPage = () => {
     const closeModal = () => {
         setModalOpen(false)
     }
+
+    //탈퇴하기
+    const navigate = useNavigate()
+    const deleteUserHandler = async () => {
+        try {
+            const userId = await getCurrentSessionId()
+            deleteUser(userId)
+        } catch {}
+    }
+
+    useEffect(() => {
+        deleteUserHandler()
+    }, [])
+
+    const handleDeleteProfile = (e) => {
+        e.preventDefault()
+        if (window.confirm("확인을 누르면 회원 정보가 삭제됩니다.")) {
+            deleteUserHandler()
+                .then(() => {
+                    alert("그동안 이용해주셔서 감사합니다.")
+                    navigate("/")
+                })
+                .catch((err) => alert(err.response.data.message))
+        } else {
+            return
+        }
+    }
+
     return (
         <StBox>
             <StLogoBox>
@@ -25,6 +56,7 @@ const MyPage = () => {
             <StMainBox>
                 {/* 사진업로드될 부분 -임시로 로고 넣어둠 */}
                 <StImg src={favicon} />
+
                 {/* 유저 닉네임?또는 이름?이 들어올 부분 */}
                 <StText>User.name</StText>
                 <StBtn
@@ -37,7 +69,13 @@ const MyPage = () => {
 
                 <EditModal open={modalOpen} close={closeModal}></EditModal>
 
-                <StBtn style={{ marginBottom: "20px" }}>탈퇴하기</StBtn>
+                <StBtn
+                    type="button"
+                    style={{ marginBottom: "20px" }}
+                    onClick={handleDeleteProfile}
+                >
+                    탈퇴하기
+                </StBtn>
             </StMainBox>
         </StBox>
     )
