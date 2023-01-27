@@ -16,6 +16,7 @@ const Header = () => {
                     justifyContent: "space-between",
                     alignItems: "center"
                 }}
+
                 style={{ cursor: "pointer" }}
             >
                 <Logo
