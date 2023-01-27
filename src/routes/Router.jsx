@@ -9,7 +9,6 @@ import Map from "../components/Map/Map"
 import Partner from "../components/Partner/Partner"
 import MyPage from "../components/MyPage/MyPage"
 import Logout from "../components/Logout/Logout"
-
 import LoginMain from "../components/LoginMain/LoginMain"
 import ImageUpload from "../components/Firebase/ImageUpload"
 
