@@ -4,7 +4,9 @@ import styled from "styled-components"
 import logo_empty from "../assets/logo_empty.png"
 import numanna_logo from "../assets/numanna_logo.png"
 import Logout from "../components/Logout/Logout"
+import { useNavigate } from "react-router-dom"
 const Header = () => {
+    const navigate = useNavigate()
     return (
         <HeaderWrap>
             <Container
@@ -14,6 +16,10 @@ const Header = () => {
                     justifyContent: "space-between",
                     alignItems: "center"
                 }}
+                onClick={() => {
+                    navigate("/")
+                }}
+                style={{ cursor: "pointer" }}
             >
                 <Logo>
                     <img src={logo_empty} alt="로고" height="40px" />
