@@ -230,7 +230,7 @@ const SignUp = () => {
                 )}
 
                 <SelectStyle onChange={(event) => setSex(event.target.value)}>
-                    <option key="man" value="Male" type="text">
+                    <option key="man" value="Male" type="text" selected>
                         남자
                     </option>
                     <option key="girl" value="Female" type="text">
@@ -244,7 +244,7 @@ const SignUp = () => {
                 <SelectStyle
                     onChange={(event) => setPartnerSex(event.target.value)}
                 >
-                    <option key="man" value="Male" type="text">
+                    <option key="man" value="Male" type="text" selected>
                         남자가 좋아요
                     </option>
                     <option key="girl" value="Female" type="text">
