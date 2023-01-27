@@ -160,9 +160,12 @@ const Edit = (props) => {
 
                     {/* 버튼:저장누르면 저장되면서 모달창닫히도록, 닫기는 수정안할시 그냥 닫기누르도록 2개 생성 */}
                     <StBtn
-                        onClick={(updateUser) => {
-                            alert("수정 완료")
-                            close = { close }
+                        onClick={() => {
+                            if (!isNickName) return
+                            if (!isEmail) return
+
+                            updateUser()
+                            close()
                         }}
                     >
                         저장
