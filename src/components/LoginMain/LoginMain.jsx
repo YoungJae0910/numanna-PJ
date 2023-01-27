@@ -1,8 +1,11 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import Header from "../../page/Header"
 
 const LoginMain = () => {
+    const navigate = useNavigate()
+
     return (
         <>
             <Header />
@@ -11,6 +14,20 @@ const LoginMain = () => {
                     <SurveyQuestionText>
                         안녕하세요. 누만나입니다.
                     </SurveyQuestionText>
+                    <button
+                        onClick={() => {
+                            navigate("/partner")
+                        }}
+                    >
+                        파트너 찾기
+                    </button>
+                    <button
+                        onClick={() => {
+                            navigate("/survey")
+                        }}
+                    >
+                        설문조사 다시하기
+                    </button>
                 </SurveyQuestionBox>
                 <SurveyAnswerBox></SurveyAnswerBox>
             </SurveyContainer>
