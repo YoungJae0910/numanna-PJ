@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import React, { useEffect, useRef, useState } from "react"
+import { useParams } from "react-router-dom"
 import styled from "styled-components"
 import { getCurrentSessionId } from "../../api/authApi.ts"
 import { addMessage } from "../../api/messagesApi.ts"
@@ -12,13 +12,17 @@ export default function Matching() {
     const [lowIntervalRemainingIterations, setLIRMI] = useState(0)
 
     const lowerInterval = () => {
-        setInterval(100)
-        setLIRMI(100)
+        setInterval(300)
+        setLIRMI(300)
     }
 
     const params = useParams()
     const chatPartner = params.id
     const [chats, setChats] = useState([])
+    const scrollRef = useRef()
+    useEffect(() => {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight
+    })
 
     const a = async () => {
         setTimeout(() => {
@@ -109,19 +113,7 @@ export default function Matching() {
     return (
         <WrapDiv>
             <ContainerDiv>
-                <Chat>
-                    {/* <ChatBoxLeftDiv>
-                        <ChatLeftText>username</ChatLeftText>
-                        <ChatLeftDiv />
-                    </ChatBoxLeftDiv>
-                    <ChatBoxRightDiv>
-                        <ChatRightDiv />
-                        <ChatRightText>me</ChatRightText>
-                    </ChatBoxRightDiv>
-                    <ChatBoxLeftDiv>
-                        <ChatLeftText>username</ChatLeftText>
-                        <ChatLeftDiv />
-                    </ChatBoxLeftDiv> */}
+                <Chat ref={scrollRef}>
                     {chats.map((c) => {
                         return c.recepientId === chatPartner ? (
                             <ChatBoxRightDiv>
@@ -136,6 +128,7 @@ export default function Matching() {
                                 <ChatLeftText>
                                     {formatContent(c.content)}
                                 </ChatLeftText>
+
                             </ChatBoxLeftDiv>
                         )
                     })}
@@ -177,29 +170,39 @@ const ChatBoxLeftDiv = styled.div`
 `
 
 const ChatLeftDiv = styled.div`
-    width: 50%;
-    height: 40px;
     background-color: #ffe1e1;
     margin-left: 1%;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 30px;
 `
 
-const ChatLeftText = styled.p``
+const ChatLeftText = styled.p`
+    font-size: 14px;
+`
 
 const ChatBoxRightDiv = styled.div`
     display: flex;
-    align-items: center;
+    flex-direction: row-reverse;
     margin-top: 2%;
-    margin-left: 40%;
+    flex-wrap: wrap;
 `
-const ChatRightText = styled.p``
+const ChatRightText = styled.p`
+    text-align: right;
+    font-size: 14px;
+    word-break: break-all;
+`
 
 const ChatRightDiv = styled.div`
-    width: 80%;
-    height: 40px;
     background-color: #ffe1e1;
-    margin-right: 1%;
+    margin-right: 8%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-left: 50px;
 `
 
 const Chat = styled.div`
     display: block;
+    overflow: auto;
+    padding-bottom: 20px;
 `

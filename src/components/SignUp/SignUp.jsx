@@ -14,6 +14,8 @@ const SignUp = () => {
     const [password, setPassword] = useState("")
     const [passwordConfirm, setPasswordConfirm] = useState("")
     const [email, setEmail] = useState("")
+    const [sex, setSex] = useState("")
+    const [partnerSex, setPartnerSex] = useState("")
 
     //오류메시지 상태저장
     const [nameMessage, setNameMessage] = useState("")
@@ -62,13 +64,14 @@ const SignUp = () => {
     const ageHandler = (event) => {
         setAge(event.target.value)
     }
+
     const idHandler = useCallback((e) => {
-        const idRegex = /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,25}$/
+        const idRegex = /^(?=.*[a-zA-Z]).{8,25}$/
         const idCurrent = e.target.value
         setId(idCurrent)
 
         if (!idRegex.test(idCurrent)) {
-            setidMessage("숫자+영문자 조합으로 8자리 이상 입력해주세요!")
+            setidMessage("8자리 이상 입력해주세요!")
             setIsid(false)
         } else {
             setidMessage("완벽한 아이디에요 : )")
@@ -132,7 +135,7 @@ const SignUp = () => {
             </StLogoBox>
 
             <StInputBox>
-                <StLogo1 src={signup} style={{ marginBottom: "20px" }} />
+                {/* <StLogo1 src={signup} style={{ marginBottom: "20px" }} /> */}
                 <StInput
                     placeholder="이름을 입력하세요."
                     type="text"
@@ -225,6 +228,33 @@ const SignUp = () => {
                         {emailMessage}
                     </Colortext>
                 )}
+
+                <SelectStyle onChange={(event) => setSex(event.target.value)}>
+                    <option key="man" value="Male" type="text">
+                        남자
+                    </option>
+                    <option key="girl" value="Female" type="text">
+                        여자
+                    </option>
+                    <option key="other" value="Other" type="text">
+                        성소수자
+                    </option>
+                </SelectStyle>
+
+                <SelectStyle
+                    onChange={(event) => setPartnerSex(event.target.value)}
+                >
+                    <option key="man" value="Male" type="text">
+                        남자가 좋아요
+                    </option>
+                    <option key="girl" value="Female" type="text">
+                        여자가 좋아요
+                    </option>
+                    <option key="other" value="Other" type="text">
+                        성소수자가 좋아요
+                    </option>
+                </SelectStyle>
+
                 <SignUpModal
                     isName={isName}
                     isNickName={isNickName}
@@ -239,6 +269,8 @@ const SignUp = () => {
                     password={password}
                     passwordConfirm={passwordConfirm}
                     email={email}
+                    sex={sex}
+                    partnerSex={partnerSex}
                 />
             </StInputBox>
         </StBox>
@@ -254,12 +286,10 @@ const StBox = styled.div`
 `
 const StLogo = styled.img`
     max-width: 300px;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 10px;
 `
 const StLogo1 = styled.img`
-    max-width: 30%;
-    margin-top: 20px;
+    max-width: 10%;
 `
 
 const StLogoBox = styled.div`
@@ -275,7 +305,7 @@ const StInputBox = styled.div`
     flex-direction: column;
     border: 1px solid #fe6473;
     width: 350px;
-    height: 650px;
+    height: 700px;
     background-color: #ffe1e1;
     border-radius: 5px;
 `
@@ -322,4 +352,16 @@ const Colortext = styled.span`
     &.error {
         color: #ff2727;
     }
+`
+
+const SelectStyle = styled.select`
+    width: 72%;
+    border-radius: 10px;
+    border: 1px solid rgb(195, 190, 190);
+    padding: 10px;
+    margin: 10px;
+    box-sizing: border-box;
+    outline: none;
+    text-align: center;
+    outline: none;
 `
