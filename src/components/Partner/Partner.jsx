@@ -61,8 +61,8 @@ const PartnerUl = styled.ul`
     max-width: 100%;
     height: 90%;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     /* overflow: scroll; */
 `
