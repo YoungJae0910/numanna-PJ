@@ -63,7 +63,7 @@ const WrapInput = styled.form`
     align-items: center;
 `
 
-const SubmitInput = styled.textarea`
+const SubmitInput = styled.input`
     width: 88%;
     height: 90%;
     text-indent: 10px;

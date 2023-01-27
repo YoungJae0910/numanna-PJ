@@ -115,17 +115,19 @@ export default function Matching() {
                     {chats.map((c) => {
                         return c.recepientId === chatPartner ? (
                             <ChatBoxRightDiv>
-                                <ChatRightDiv />
-                                <ChatRightText>
-                                    {formatContent(c.content)}
-                                </ChatRightText>
+                                <ChatRightDiv>
+                                    <ChatRightText>
+                                        {formatContent(c.content)}
+                                    </ChatRightText>
+                                </ChatRightDiv>
                             </ChatBoxRightDiv>
                         ) : (
                             <ChatBoxLeftDiv>
-                                <ChatLeftDiv />
-                                <ChatLeftText>
-                                    {formatContent(c.content)}
-                                </ChatLeftText>
+                                <ChatLeftDiv>
+                                    <ChatLeftText>
+                                        {formatContent(c.content)}
+                                    </ChatLeftText>
+                                </ChatLeftDiv>
                             </ChatBoxLeftDiv>
                         )
                     })}
