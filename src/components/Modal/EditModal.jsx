@@ -2,6 +2,7 @@ import React from "react"
 import Edit from "../MyPage/Edit"
 import "./editmodal.css"
 
+// 자식 컴포넌트
 const EditModal = (props) => {
     const { open, close } = props
 

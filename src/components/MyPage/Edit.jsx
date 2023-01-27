@@ -11,6 +11,8 @@ import {
     StInput
 } from "./styles"
 
+// EditModal의 부모 컴포넌트
+
 const Edit = (props) => {
     //user정보
     const [editnickName, setEditNickName] = useState("")
@@ -57,6 +59,9 @@ const Edit = (props) => {
         }
     }, [])
 
+    // input창에 입력한 닉네임으로 변경
+
+    // const [nicknameIsShow, setNicknameIsShow] = useState()
     return (
         <div>
             <StBox>
