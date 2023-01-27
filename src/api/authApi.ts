@@ -96,7 +96,7 @@ export const getCurrentSessionId = async () => {
 }
 
 export const updateUser = async (id: string, newUser: User) => {
-    const res = await axios.put(getUsersUrl() + "/" + id, newUser)
+    const res = await axios.patch(getUsersUrl() + "/" + id, newUser)
     if (!res) return
 
     return res.data
