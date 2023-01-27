@@ -4,7 +4,7 @@ import logo from "../../assets/logo.png"
 import favicon from "../../assets/favicon.png"
 import EditModal from "../Modal/EditModal"
 import { StLogo, StLogoBox } from "./styles"
-import { getCurrentSessionId } from "../../api/authApi.ts"
+import { getCurrentSessionId, getUser } from "../../api/authApi.ts"
 import { deleteUser } from "../../api/authApi.ts"
 import { useNavigate } from "react-router-dom"
 
@@ -29,10 +29,6 @@ const MyPage = () => {
         } catch {}
     }
 
-    useEffect(() => {
-        deleteUserHandler()
-    }, [])
-
     const handleDeleteProfile = (e) => {
         e.preventDefault()
         if (window.confirm("확인을 누르면 회원 정보가 삭제됩니다.")) {
@@ -47,6 +43,8 @@ const MyPage = () => {
         }
     }
 
+    // 닉네임
+
     return (
         <StBox>
             <StLogoBox>
@@ -58,7 +56,7 @@ const MyPage = () => {
                 <StImg src={favicon} />
 
                 {/* 유저 닉네임?또는 이름?이 들어올 부분 */}
-                <StText>User.name</StText>
+                <StText>user.nickname</StText>
                 <StBtn
                     onClick={() => {
                         openModal()
