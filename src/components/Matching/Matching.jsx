@@ -71,8 +71,6 @@ export default function Matching() {
         lowerInterval()
     }
 
-    const navigate = useNavigate()
-
     const formatContent = (content) => {
         let result = content
 
@@ -128,7 +126,6 @@ export default function Matching() {
                                 <ChatLeftText>
                                     {formatContent(c.content)}
                                 </ChatLeftText>
-
                             </ChatBoxLeftDiv>
                         )
                     })}
