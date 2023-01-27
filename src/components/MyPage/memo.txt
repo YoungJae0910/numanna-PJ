@@ -1,3 +1,5 @@
+// Edit.jsx
+
 import React, { useCallback, useState } from "react"
 import logo from "../../assets/numanna_logo.png"
 import {
@@ -116,3 +118,58 @@ const Edit = (props) => {
 }
 
 export default Edit
+
+-------------------------------------------------------
+
+// EditModal.jsx
+
+import React from "react"
+import Edit from "../MyPage/Edit"
+import "./editmodal.css"
+
+const EditModal = (props) => {
+    const { open, close } = props
+
+    return (
+        // 모달이 열릴때 openModal 클래스가 생성된다.
+        <div className={open ? "OpenModal Modal" : "Modal"}>
+            {open ? (
+                <section>
+                    <main>
+                        <Edit close={close} />
+                    </main>
+                </section>
+            ) : null}
+        </div>
+    )
+}
+
+export default EditModal
+
+
+
+-------------------------------------------------
+
+function nickNameHandler(useCallback(e)) {
+
+
+}
+
+
+const showName = () => {
+  alert("name")
+}
+
+
+<button onChange={showName}>이름 보이기</button>
+<button onChange={() => {alert("age")}}>나이 보이기</button>
+
+function showText(txt) {
+  return console.log(txt)
+}
+
+
+<input type = "text" onChange={(e) => {
+  const txt = e.target.value;
+  showText(txt);
+}}>텍스트 보이기</button>
