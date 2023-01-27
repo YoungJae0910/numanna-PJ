@@ -168,9 +168,8 @@ const Edit = (props) => {
 
                             if (!isNickName) return
                             if (!isEmail) return
-
-                            onUpdateUser()
                             close()
+                            updateUser()
                         }}
                     >
                         저장
