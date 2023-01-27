@@ -7,6 +7,7 @@ import { StLogo, StLogoBox } from "./styles"
 import { getCurrentSessionId, getUser } from "../../api/authApi.ts"
 import { deleteUser } from "../../api/authApi.ts"
 import { useNavigate } from "react-router-dom"
+import ImageUpload from "../Firebase/ImageUpload"
 
 const MyPage = () => {
     // 정보수정은 모달창으로 만들기
@@ -53,7 +54,9 @@ const MyPage = () => {
 
             <StMainBox>
                 {/* 사진업로드될 부분 -임시로 로고 넣어둠 */}
-                <StImg src={favicon} />
+                {/* <StImg src={favicon} /> */}
+
+                <ImageUpload />
 
                 {/* 유저 닉네임?또는 이름?이 들어올 부분 */}
                 <StText>user.nickname</StText>

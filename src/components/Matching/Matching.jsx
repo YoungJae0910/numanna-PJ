@@ -193,7 +193,7 @@ const ChatRightText = styled.p`
 `
 
 const ChatRightDiv = styled.div`
-    background-color: #ffe1e1;
+    background-color: rgb(200, 246, 253);
     margin-right: 8%;
     padding-right: 10px;
     padding-left: 10px;
