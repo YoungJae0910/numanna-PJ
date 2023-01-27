@@ -49,6 +49,7 @@ const StBox = styled.div`
     display: flex;
     justify-content: end;
     align-items: center;
+    flex-wrap: wrap;
 `
 
 const StText = styled.span`
@@ -70,6 +71,7 @@ const StBtn = styled.button`
     border: 2px solid #f6809f;
     font-weight: 600;
     outline: none;
+
     &:hover {
         background-color: white;
         color: #f25a5a;
