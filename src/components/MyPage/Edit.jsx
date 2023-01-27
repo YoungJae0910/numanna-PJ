@@ -33,8 +33,8 @@ const Edit = (props) => {
     const [emailMessage, setEmailMessage] = useState("")
 
     //유효성검사
-    const [isNickName, setIsNickName] = useState(false)
-    const [isEmail, setIsEmail] = useState(false)
+    const [isNickName, setIsNickName] = useState(true)
+    const [isEmail, setIsEmail] = useState(true)
 
     // 모달창닫기 프롭
     const { close } = props
@@ -57,9 +57,13 @@ const Edit = (props) => {
     // 정보 변경
 
     const updateUser = async () => {
-        const id = await getCurrentSessionId()
-        const editUser = { nickName, email }
-        const res = await axios.put(getUsersUrl() + "/" + id, editUser)
+        // const id = await getCurrentSessionId()
+        // const editUser = { nickName, email }
+        // const res = await axios.put(getUsersUrl() + "/" + id, editUser)
+        const newUser = user
+        newUser.email = email
+        newUser.nickName = nickName
+        const res = await updateUser(newUser.id, newUser)
 
         if (!res) return
 
@@ -105,8 +109,6 @@ const Edit = (props) => {
         setNickName(u.nickName)
         setEmail(u.email)
     }
-
-    const changeUserInfo = () => {}
 
     return (
         <div>
@@ -161,6 +163,9 @@ const Edit = (props) => {
                     {/* 버튼:저장누르면 저장되면서 모달창닫히도록, 닫기는 수정안할시 그냥 닫기누르도록 2개 생성 */}
                     <StBtn
                         onClick={() => {
+                            console.log(user.nickName, nickName)
+                            console.log(user.email, email)
+
                             if (!isNickName) return
                             if (!isEmail) return
 
