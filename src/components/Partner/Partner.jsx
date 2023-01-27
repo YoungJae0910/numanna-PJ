@@ -79,18 +79,21 @@ const StUlBox = styled.div`
 `
 
 const PartnerUl = styled.ul`
-    max-width: 100%;
+    max-width: 60%;
+    min-width: 350px;
     height: 90%;
     padding: 20px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    place-items: center;
+    grid-gap: 10;
     align-items: center;
     /* overflow: scroll; */
 `
 
 const PartnerLi = styled.li`
     width: 90%;
-    height: 110px;
+    height: 200px;
     list-style: none;
     margin: 20px;
     padding: 10px;
@@ -98,25 +101,26 @@ const PartnerLi = styled.li`
     border-radius: 10px;
     background-color: #ffe1e1;
     display: flex;
+    align-items: center;
     justify-content: space-around;
     box-shadow: 0 17px 20px -18px rgba(0, 0, 0, 1);
 `
 
 const PartnerImg = styled.div`
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     background-color: #f9f2f2;
     border-radius: 50%;
 `
 
 const PartnerInfo = styled.div`
     width: 60%;
-    height: 80px;
+    height: 100px;
     /* background-color: #b04f4f; */
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     margin: 10px;
     /* padding: 10px; */
 `

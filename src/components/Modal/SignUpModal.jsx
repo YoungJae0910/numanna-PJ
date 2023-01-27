@@ -69,7 +69,8 @@ export default function SignUpModal({
             >
                 <ModalText>회원가입을 축하드립니다!!</ModalText>
                 <Link to={"/Survey"}>
-                    <FinishBtn>회원가입 하러 가기!</FinishBtn>
+
+                    <FinishBtn>설문조사 하러가기!</FinishBtn>
                 </Link>
             </ModalBox>
         </>
@@ -77,7 +78,7 @@ export default function SignUpModal({
 }
 
 const FinishBtn = styled.button`
-    width: 75%;
+    width: 76%;
     border-radius: 5px;
     color: white;
     background-color: #f25a5a;

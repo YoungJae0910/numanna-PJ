@@ -16,12 +16,14 @@ const Header = () => {
                     justifyContent: "space-between",
                     alignItems: "center"
                 }}
-                onClick={() => {
-                    navigate("/")
-                }}
+
                 style={{ cursor: "pointer" }}
             >
-                <Logo>
+                <Logo
+                    onClick={() => {
+                        navigate("/")
+                    }}
+                >
                     <img src={logo_empty} alt="로고" height="40px" />
                     <img src={numanna_logo} alt="글씨로고" height="40px" />
                 </Logo>
