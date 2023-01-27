@@ -65,11 +65,11 @@ export default function ImageUpload() {
 }
 
 const StBtn = styled.button`
-    width: 40%
+    width: 40%;
     height: 10px;
     border-radius: 5px;
     color: #f25a5a;
-    background-color:white
+    background-color: white;
     padding: 5px;
     margin: 5px;
     border: 2px solid #f6809f;
