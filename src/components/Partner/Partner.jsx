@@ -15,7 +15,6 @@ const Partner = () => {
     const fetchData = async () => {
         const data = await getUsers()
         setUsers(data)
-        console.log(data)
 
         setTimeout(() => {
             setItems(items.concat(Array.from({ length: 7 })))
@@ -83,8 +82,8 @@ const PartnerUl = styled.ul`
     max-width: 100%;
     height: 90%;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     align-items: center;
     /* overflow: scroll; */
 `
