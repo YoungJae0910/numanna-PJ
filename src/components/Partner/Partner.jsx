@@ -104,6 +104,12 @@ const PartnerLi = styled.li`
     align-items: center;
     justify-content: space-around;
     box-shadow: 0 17px 20px -18px rgba(0, 0, 0, 1);
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+        transition: 0.7s;
+    }
 `
 
 const PartnerImg = styled.div`
