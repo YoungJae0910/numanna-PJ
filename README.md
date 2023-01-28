@@ -4,9 +4,10 @@
 
 아무나 만나지 못했기에 누구나 만날 수 있는 신개념 데이팅 사이트
 
-## Available Scripts
+## 팀원 소개
 
-In the project directory, you can run:
+| 유영재 | 김유안 | 김혜진 | 성민준 | 조영준 |
+| ------ | ------ | ------ | ------ | ------ |
 
 ### `npm start`
 
