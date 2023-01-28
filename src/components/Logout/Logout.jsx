@@ -71,6 +71,7 @@ const StBtn = styled.button`
     border: 2px solid #f6809f;
     font-weight: 600;
     outline: none;
+    cursor: pointer;
 
     &:hover {
         background-color: white;
