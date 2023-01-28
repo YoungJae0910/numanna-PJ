@@ -16,7 +16,6 @@ const Header = () => {
                     justifyContent: "space-between",
                     alignItems: "center"
                 }}
-                style={{ cursor: "pointer" }}
             >
                 <Logo
                     onClick={() => {
@@ -44,5 +43,6 @@ const HeaderWrap = styled.header`
 `
 
 export const Logo = styled.h1`
+    cursor: pointer;
     padding-top: 8px;
 `
