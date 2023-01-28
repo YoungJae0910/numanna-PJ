@@ -9,13 +9,16 @@
 | 유영재 | 김유안 | 김혜진 | 성민준 | 조영준 |
 | ------ | ------ | ------ | ------ | ------ |
 
-### `npm start`
+### 기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+회원가입, 로그인
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   회원정보 수집 및 저장
+    mypage
+-   프로필 수정
+    설문조사
+    회원매칭
+    매칭 후 대화(crud)
 
 ### `npm test`
 
