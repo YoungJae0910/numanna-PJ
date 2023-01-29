@@ -32,7 +32,9 @@ const Login = () => {
     return (
         <StBox>
             <StLogoBox>
-                <StLogo src={logo} />
+                <Link to={"/"}>
+                    <StLogo src={logo} />
+                </Link>
             </StLogoBox>
 
             <StInputBox
