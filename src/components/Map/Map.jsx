@@ -1,8 +1,21 @@
 import React, { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
+import { getCurrentSessionId } from "../../api/authApi.ts"
 const { kakao } = window
 
 export default function Map() {
+    const navigate = useNavigate()
+    const onRestrictedPageLoad = async () => {
+        const user = await getCurrentSessionId()
+        if (user === "") {
+            navigate("/")
+        }
+    }
+    useEffect(() => {
+        onRestrictedPageLoad()
+    }, [])
+
     useEffect(() => {
         const container = document.getElementById("myMap")
         const options = {

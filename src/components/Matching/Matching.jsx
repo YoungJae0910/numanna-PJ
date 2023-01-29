@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 import { getCurrentSessionId } from "../../api/authApi.ts"
 import { addMessage } from "../../api/messagesApi.ts"
@@ -7,6 +7,17 @@ import { getMessagesBetweenUsersBySentAtAscending } from "../../api/messagesApi.
 import MatchingChat from "./MatchingChat"
 
 export default function Matching() {
+    const navigate = useNavigate()
+    const onRestrictedPageLoad = async () => {
+        const user = await getCurrentSessionId()
+        if (user === "") {
+            navigate("/")
+        }
+    }
+    useEffect(() => {
+        onRestrictedPageLoad()
+    }, [])
+
     const [interval, setInterval] = useState(1000)
 
     const [lowIntervalRemainingIterations, setLIRMI] = useState(0)

@@ -15,8 +15,18 @@ import { useNavigate } from "react-router-dom"
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
 
 const Survey = () => {
-    const percentage = 66
     const navigate = useNavigate()
+    const onRestrictedPageLoad = async () => {
+        const user = await getCurrentSessionId()
+        if (user === "") {
+            navigate("/")
+        }
+    }
+    useEffect(() => {
+        onRestrictedPageLoad()
+    }, [])
+
+    const percentage = 66
 
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [questions, setQuestions] = useState([])

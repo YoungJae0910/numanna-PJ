@@ -13,8 +13,11 @@ const Login = () => {
 
     const [id, setId] = useState("")
     const [password, setPassword] = useState("")
+    const [loginPressed, setLoginPressed] = useState(false)
 
-    const onLoginPressed = async () => {
+    const onLoginPressed = async (e) => {
+        e.preventDefault()
+        setLoginPressed(true)
         const res = await loginFunction(id, password)
         console.log(res)
 
@@ -29,10 +32,16 @@ const Login = () => {
     return (
         <StBox>
             <StLogoBox>
-                <StLogo src={logo} />
+                <Link to={"/"}>
+                    <StLogo src={logo} />
+                </Link>
             </StLogoBox>
 
-            <StInputBox>
+            <StInputBox
+                onSubmit={(e) => {
+                    onLoginPressed(e)
+                }}
+            >
                 <StLogo src={login} style={{ maxWidth: "40%" }} />
                 <StInput
                     placeholder="아이디를 입력하세요."
@@ -51,8 +60,12 @@ const Login = () => {
                         setPassword(e.target.value)
                     }}
                 />
-                <StBtn onClick={onLoginPressed}>로그인하기</StBtn>
-
+                <StBtn type="submit">로그인하기</StBtn>
+                {loginPressed && (
+                    <StyledTextP>
+                        아이디와 비밀번호를 확인해주세요 :/
+                    </StyledTextP>
+                )}
                 {/* 링크들어갈예정 */}
                 {/* <Link to="/"></Link> */}
                 <StyleLink to="/signup">
@@ -86,7 +99,7 @@ const StLogoBox = styled.div`
     justify-content: center;
 `
 
-const StInputBox = styled.div`
+const StInputBox = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -145,4 +158,8 @@ const StText = styled.span`
 `
 const StyleLink = styled(Link)`
     text-decoration: none;
+`
+const StyledTextP = styled.p`
+    font-size: 8px;
+    color: red;
 `

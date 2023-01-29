@@ -2,9 +2,20 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import Header from "../../page/Header"
+import { useEffect } from "react"
+import { getCurrentSessionId } from "../../api/authApi.ts"
 
 const LoginMain = () => {
     const navigate = useNavigate()
+    const onRestrictedPageLoad = async () => {
+        const user = await getCurrentSessionId()
+        if (user === "") {
+            navigate("/")
+        }
+    }
+    useEffect(() => {
+        onRestrictedPageLoad()
+    }, [])
 
     return (
         <>
