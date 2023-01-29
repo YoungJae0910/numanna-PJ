@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { getUsersUrl } from "./apiSettings"
 
 export type PersonalityType = {
@@ -45,6 +45,8 @@ const NULL_USER: User = {
 
 export const validatePassword = async (id: string, password: string) => {
     const user: User = await getUser(id)
+    console.log(user)
+
     if (!user) return false
 
     const doesPasswordMatch = HashPassword.v1(password) === user.password
