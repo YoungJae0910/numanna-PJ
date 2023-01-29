@@ -27,7 +27,7 @@
 
     -   집계한 점수를 토대로 비교 매칭
 
-### 사용스택
+### 개발 언어 및 프레임 워크
 
 <div align="left">
 	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
