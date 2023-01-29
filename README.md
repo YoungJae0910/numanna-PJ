@@ -38,14 +38,22 @@
 	<img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=Firebase&logoColor=white" />
 </div>
 
+### 회원가입 페이지
+
+![회원가입 페이지](https://ifh.cc/g/MA050f.png)
+
 ### 로그인 페이지
 
-![메인페이지](https://ifh.cc/g/MA050f.png)
-
-### 회원가입 페이지
+![로그인 페이지](https://ifh.cc/g/OwPO5o.png)
 
 ### 마이 페이지
 
+![마이 페이지](https://ifh.cc/g/1bZxP5.png)
+
 ### 설문조사
 
+![설문조사](https://ifh.cc/g/o82Rdt.png)
+
 ### 회원매칭
+
+![회원매칭](https://ifh.cc/g/O7d1xo.png)
