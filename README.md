@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Numanna 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+일정 점수에 도달해야 가입과 만남이 가능한 소개팅 웹 페이지가 아니라 누구나 사용 가능 한 소개팅 웹(아만나에서 점수 미달된 회원들을 위한 웹 사이트)
 
-## Available Scripts
+아무나 만나지 못했기에 누구나 만날 수 있는 신개념 데이팅 사이트
 
-In the project directory, you can run:
+## 팀원 소개
 
-### `npm start`
+| 유영재 | 김유안 | 김혜진 | 성민준 | 조영준 |
+| ------ | ------ | ------ | ------ | ------ |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 기능
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   회원가입, 로그인
 
-### `npm test`
+    -   회원정보 수집 및 저장
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   mypage
 
-### `npm run build`
+    -   프로필 수정
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-   설문조사
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    -   항목 별로 점수 집계
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+-   회원매칭
 
-### `npm run eject`
+    -   집계한 점수를 토대로 비교 매칭
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 개발 언어 및 프레임 워크
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<div align="left">
+	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
+	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+	<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat&logo=Javascript&logoColor=black" />
+	<img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=black" />
+	<img src="https://img.shields.io/badge/Typescript-3178C6?style=flat&logo=TypeScript&logoColor=white" />
+	<img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat&logo=Firebase&logoColor=white" />
+</div>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 회원가입 페이지
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![회원가입 페이지](https://ifh.cc/g/MA050f.png)
 
-## Learn More
+### 로그인 페이지
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![로그인 페이지](https://ifh.cc/g/OwPO5o.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 마이 페이지
 
-### Code Splitting
+![마이 페이지](https://ifh.cc/g/1bZxP5.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 설문조사
 
-### Analyzing the Bundle Size
+![설문조사](https://ifh.cc/g/o82Rdt.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### 회원매칭
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![회원매칭](https://ifh.cc/g/O7d1xo.png)
