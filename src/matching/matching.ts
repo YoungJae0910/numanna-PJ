@@ -113,6 +113,6 @@ export const getScoreDiffInfoBetweenTwoUsers = (userOne, userTwo) => {
         }
     } else {
         // Smoking is smallest-ish
-        return `흡연 성향이 비슷해요! 흠연 점수가 ${smokingScoreDiff}점 차이나요.`
+        return `흡연 성향이 비슷해요! 흡연 점수가 ${smokingScoreDiff}점 차이나요.`
     }
 }
