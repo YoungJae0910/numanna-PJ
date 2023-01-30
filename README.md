@@ -56,4 +56,8 @@
 
 ### 회원매칭
 
-![회원매칭](https://ifh.cc/g/O7d1xo.png)
+![회원매칭](https://ifh.cc/g/w7aKrf.png)
+
+### 채팅 기능
+
+![채팅 기능](https://ifh.cc/g/qxlhfn.png)
