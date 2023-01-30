@@ -132,7 +132,7 @@ const PartnerLi = styled.li`
     align-items: center;
     justify-content: space-around;
     box-shadow: 0 17px 20px -18px rgba(0, 0, 0, 1);
-    cursor: pointer;
+    /* cursor: pointer; */
 
     &:hover {
         transform: scale(1.05);
@@ -160,6 +160,8 @@ const PartnerChatButton = styled.button`
 
     padding: 5px 10px;
     border-radius: 5px;
+
+    cursor: pointer;
 
     margin-top: 10%;
 `
