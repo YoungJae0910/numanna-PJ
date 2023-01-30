@@ -48,11 +48,11 @@
 
 ### 마이 페이지
 
-![마이 페이지](https://ifh.cc/g/1bZxP5.png)
+![마이 페이지](https://ifh.cc/g/RY1StK.png)
 
 ### 설문조사
 
-![설문조사](https://ifh.cc/g/o82Rdt.png)
+![설문조사](https://ifh.cc/g/n1xnLH.png)
 
 ### 회원매칭
 
